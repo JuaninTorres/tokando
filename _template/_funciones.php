@@ -35,6 +35,7 @@ function getHead($whereami='inicio')
     <link rel="stylesheet" href="/_css/normalize.css" />
     <link rel="stylesheet" href="/_css/estilo.css" />
     <script src="/_js/prefixfree.min.js"></script>
+    <script>
     // Carga del locutor online
         $(document).on("ready",contDinamico);
         function contDinamico () {
