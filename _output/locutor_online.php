@@ -5,11 +5,11 @@ $connection = new connectPDO;
 
 $data = $connection->getrow("SELECT
     o.id_online,
-    NOW() BETWEEN tiempo_desde AND tiempo_hasta as vigente,".PREFIXTABLA."_users.*,
+    NOW() BETWEEN tiempo_desde AND tiempo_hasta as vigente,u.*,
     CASE WHEN fecha_nacimiento IS NOT NULL THEN
         CONCAT(CAST((YEAR(CURDATE())-YEAR(fecha_nacimiento)) - (RIGHT(CURDATE(),5)<RIGHT(fecha_nacimiento,5)) AS CHAR), ' años')
     ELSE '-' END as edad
-FROM ".PREFIXTABLA."_online as o, ".PREFIXTABLA."._users as u
+FROM ".PREFIXTABLA."_online as o, ".PREFIXTABLA."_users as u
 WHERE u.id_user = o.id_user AND o.id_online = (SELECT MAX(id_online) FROM ".PREFIXTABLA."_online)");
 
 $autoLocutor = ($data===PDOWARNING || $data['vigente']=='0')?true:false;
