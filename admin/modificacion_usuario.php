@@ -7,7 +7,7 @@ if(isset($_POST['id_user']) && $_SESSION['auth']['user_admin']==='1')
     $codeInputCheck = 'class="radio" onclick="guardando(this.value,this.id,this.checked)"';
     $codeInputRadio = 'onclick="guardando(this.value,this.name)" ';
 
-    require_once(DOCUMENT_ROOT.'/class/connectPDO.php');
+    require_once($_SERVER['DOCUMENT_ROOT'].'/class/connectPDO.php');
     $connection = new connectPDO;
 
     $sql = 'SELECT * FROM '.PREFIXTABLA.'_users WHERE id_user = ?';

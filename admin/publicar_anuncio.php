@@ -4,7 +4,7 @@ session_start();
 // solo operará si es que
 if(isset($_POST))
 {
-    require_once(DOCUMENT_ROOT.'/class/connectPDO.php');
+    require_once($_SERVER['DOCUMENT_ROOT'].'/class/connectPDO.php');
     $connection = new connectPDO;
 
     $sql = 'INSERT INTO '.PREFIXTABLA.'_anuncios (id_user,titulo,url_imagen,url_link) VALUES (?,?,?,?)';

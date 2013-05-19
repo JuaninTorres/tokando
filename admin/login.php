@@ -5,7 +5,7 @@ session_start();
 // solo operará si es que
 if(isset($_POST))
 {
-    require_once(DOCUMENT_ROOT.'/class/connectPDO.php');
+    require_once($_SERVER['DOCUMENT_ROOT'].'/class/connectPDO.php');
     $connection = new connectPDO;
 
     $sql = 'SELECT * FROM '.PREFIXTABLA.'_users WHERE user_name = ? AND user_pass = ?';

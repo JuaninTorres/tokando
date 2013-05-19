@@ -4,7 +4,7 @@ if(isset($_POST['user_name']) && $_SESSION['auth']['user_admin']==='1')
 {
     try
     {
-        require_once(DOCUMENT_ROOT.'/class/connectPDO.php');
+        require_once($_SERVER['DOCUMENT_ROOT'].'/class/connectPDO.php');
         $connection = new connectPDO;
 
         $sql = 'DELETE FROM '.PREFIXTABLA.'_users WHERE user_name = ?';

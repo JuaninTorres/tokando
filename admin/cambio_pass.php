@@ -4,7 +4,7 @@ session_start();
 // solo operará si es que
 if(isset($_POST))
 {
-    require_once(DOCUMENT_ROOT.'/class/connectPDO.php');
+    require_once($_SERVER['DOCUMENT_ROOT'].'/class/connectPDO.php');
     $connection = new connectPDO;
 
     $sql = 'UPDATE '.PREFIXTABLA.'_users SET user_pass = ? WHERE id_user = ?';

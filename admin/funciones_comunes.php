@@ -7,7 +7,7 @@ function getLocutorOnline()
     $codeInputCheck = 'class="radio" onclick="guardando(this.value,this.id,this.checked)"';
     $codeInputRadio = 'onclick="guardando(this.value,this.name)" ';
 
-    require_once(DOCUMENT_ROOT.'/class/connectPDO.php');
+    require_once($_SERVER['DOCUMENT_ROOT'].'/class/connectPDO.php');
     $connection = new connectPDO;
 
     //$jsCall[] = "alert('".$_SESSION['auth']['id_online']."')";

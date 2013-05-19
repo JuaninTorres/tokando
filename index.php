@@ -1,6 +1,6 @@
 <?php
 require_once($_SERVER['DOCUMENT_ROOT'].'/configuration.inc.php');
-require_once(DOCUMENT_ROOT.'/class/connectPDO.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/class/connectPDO.php');
 $connectPDO = new connectPDO;
 
 $configuracion['prefijoURL'] = '';

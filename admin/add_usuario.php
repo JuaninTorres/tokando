@@ -8,7 +8,7 @@ if(isset($_POST['user_name']) && $_SESSION['auth']['user_admin']==='1')
         {
             throw new Exception("El nombre de usuario no puede estar vacio", 1);
         }
-        require_once(DOCUMENT_ROOT.'/class/connectPDO.php');
+        require_once($_SERVER['DOCUMENT_ROOT'].'/class/connectPDO.php');
         $connection = new connectPDO;
 
         $sql = 'INSERT INTO '.PREFIXTABLA.'_users (user_name) VALUES (?)';

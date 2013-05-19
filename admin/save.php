@@ -3,7 +3,7 @@ session_start();
 
 if(isset($_POST))
 {
-    require_once(DOCUMENT_ROOT.'/class/connectPDO.php');
+    require_once($_SERVER['DOCUMENT_ROOT'].'/class/connectPDO.php');
     $connection = new connectPDO;
 
     $caption = (trim($_POST['valor']) == '') ? NULL : $_POST['valor'];

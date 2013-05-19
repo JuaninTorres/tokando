@@ -9,7 +9,7 @@ if(isset($_SESSION['auth']['id_user']))
 
     $id = $_SESSION['auth']['id_user'];
 
-    require_once(DOCUMENT_ROOT.'/class/connectPDO.php');
+    require_once($_SERVER['DOCUMENT_ROOT'].'/class/connectPDO.php');
     $connection = new connectPDO;
 
     $sql = 'SELECT * FROM '.PREFIXTABLA.'_users WHERE id_user = ?';

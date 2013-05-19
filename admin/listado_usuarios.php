@@ -2,7 +2,7 @@
 session_start();
 if($_SESSION['auth']['user_admin']==='1')
 {
-    require_once(DOCUMENT_ROOT.'/class/connectPDO.php');
+    require_once($_SERVER['DOCUMENT_ROOT'].'/class/connectPDO.php');
     $connection = new connectPDO;
     $sql = 'SELECT * FROM '.PREFIXTABLA.'_users';
     try

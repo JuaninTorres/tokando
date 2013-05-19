@@ -1,6 +1,6 @@
 <?php
 
-require_once(DOCUMENT_ROOT.'/class/connectPDO.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/class/connectPDO.php');
 $connection = new connectPDO;
 
 $data = $connection->getrow("SELECT
