@@ -5,7 +5,7 @@ function getPrincipal($whereami='inicio')
     switch($whereami)
     {
         case 'inicio':
-            $contenido .= getChat();
+            $contenido = getChat();
             $contenido .= getRedes();
             break;
         default:
@@ -53,8 +53,8 @@ function getHead($whereami='inicio')
 
 function getHeader($whereami='inicio')
 {
-    $contenido .= getNav($whereami);
-    $contenido = '<div id="arriba" style="">
+    $contenido = getNav($whereami);
+    $contenido .= '<div id="arriba" style="">
                 <img src="/imagenes/logoarriba.png">
             </div>';
     return $contenido;
