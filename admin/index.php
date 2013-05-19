@@ -14,20 +14,20 @@ else
 <head>
     <meta charset='utf-8' />
     <title>Seleccionando Dj</title>
-    <link rel='stylesheet' href='css/ui-lightness/jquery-ui-1.10.1.css' />
+    <link rel='stylesheet' href='/_css/ui-lightness/jquery-ui-1.10.1.css' />
     <!-- <link rel='stylesheet' href='css/ui-overcast/jquery-ui-1.10.1.css' /> -->
     <!-- <link rel='stylesheet' href='css/ui-dot-luv/jquery-ui-1.10.2.css' /> -->
 
-    <link rel='stylesheet' href='css/jquery-ui-timepicker-addon.css' />
+    <link rel='stylesheet' href='/_css/jquery-ui-timepicker-addon.css' />
     <link href='http://fonts.googleapis.com/css?family=Open+Sans|Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
     <link rel='stylesheet' href='css/estilos.css' />
 
-    <script src='js/jquery-1.9.1.min.js'></script>
-    <script src='js/jquery-ui-1.10.2.min.js'></script>
-    <script src='js/jquery-ui-timepicker-addon.js'></script>
+    <script src='/_js/jquery-1.9.1.min.js'></script>
+    <script src='/_js/jquery-ui-1.10.2.min.js'></script>
+    <script src='/_js/jquery-ui-timepicker-addon.js'></script>
     <!-- <script src="_upload/js/vendor/jquery.ui.widget.js"></script> -->
-    <script src="/_upload/js/jquery.iframe-transport.js"></script>
-    <script src="/_upload/js/jquery.fileupload.js"></script>
+    <script src="/_js/jquery.iframe-transport.js"></script>
+    <script src="/_js/jquery.fileupload.js"></script>
 
     <script src='js/scripts.js'></script>
 </head>
