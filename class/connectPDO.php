@@ -18,6 +18,12 @@ class connectPDO extends PDO
     protected $preparedSQL=array();
     public function __construct($dsnIN=null,$subdominioPATH=null)
     {
+        global $connectPDO_server;
+        global $connectPDO_port;
+        global $connectPDO_db;
+        global $connectPDO_user;
+        global $connectPDO_pass;
+
         // Si no existe el archivo de conexion, nada que hacer
         if (!file_exists(PDOCONFFILE)){
             die('No se ha encontrado el archivo de configuracion de la conexion   :('.PDOCONFFILE);
