@@ -1,10 +1,9 @@
-
 *{
 	margin: 0;
 	padding: 0;
 }
 body{
-	background: url(	imagenes/fondo.jpg);
+	background: url(/imagenes/fondo.jpg);
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
 	background-attachment: fixed;
@@ -74,7 +73,7 @@ nav , #arriba{
 	max-width: 100%;
 }
 #slide{
-	width:1000px; 
+	width:1000px;
 	height:380px;
 }
 #repro{
@@ -217,7 +216,7 @@ nav , #arriba{
 	max-width: 100%;
 }
 .titulo2{
-	background: url(imagenes/cinta.jpg) no-repeat;
+	background: url(/imagenes/cinta.jpg) no-repeat;
 	background-size: cover;
 	text-align: center;
 	border-radius: 8px;
@@ -291,7 +290,7 @@ footer{
 	text-align: center;
 	color: #0061C1;
 	font-size: 1.6em;
-	
+
 }
 footer a{
 	text-decoration: none;

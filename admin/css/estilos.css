@@ -1,0 +1,71 @@
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+}
+body h1, body h2, body h3
+{
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+
+fieldset { padding:0; border:0; margin-top:25px; }
+input.text { margin-bottom:12px; width:95%; padding: .4em; }
+
+#div_btn_ingresar { display: none;}
+#div_btn_logout { display: none; }
+#div_user_logueado
+{
+    display: none;
+    text-align: right;
+}
+#divlogin, #divchangepass { display: none; }
+#divMensajeError
+{
+    display: none;
+    margin: 1em 0.5em;
+    width: 70%;
+}
+
+#div_modificar {
+    border: 0;
+    padding-top: 4em;
+    width: 70%;
+}
+#estado_usuario {
+    display: inline-block;
+}
+#modalModificarUsuario {
+    display: none;
+}
+#modificion_usuario
+{
+    width: 100%
+}
+#modificion_usuario th {
+    width: 20%;
+}
+#modificion_usuario td input {
+    width: 99%;
+}
+#modificion_usuario td textarea {
+    width: 99%;
+    height: 5em;
+}
+#principal #tabs fieldset {
+    padding-top: 1em;
+}
+#user_logueado
+{
+    font-weight: bold;
+    padding-right: 1em;
+    text-transform: capitalize;
+}
+#usuarios
+{
+    margin: 0 0.5em;
+    width: 70%;
+}
+
+#usuarios thead tr th:last-child {
+    width: 6em;
+}
