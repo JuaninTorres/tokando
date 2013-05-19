@@ -26,8 +26,8 @@ else
     <script src='js/jquery-ui-1.10.2.min.js'></script>
     <script src='js/jquery-ui-timepicker-addon.js'></script>
     <!-- <script src="_upload/js/vendor/jquery.ui.widget.js"></script> -->
-    <script src="_upload/js/jquery.iframe-transport.js"></script>
-    <script src="_upload/js/jquery.fileupload.js"></script>
+    <script src="/_upload/js/jquery.iframe-transport.js"></script>
+    <script src="/_upload/js/jquery.fileupload.js"></script>
 
     <script src='js/scripts.js'></script>
 </head>
