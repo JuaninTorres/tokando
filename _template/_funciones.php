@@ -2,6 +2,7 @@
 
 function getPrincipal($whereami='inicio')
 {
+    $whereami = addslashes($whereami);
     switch($whereami)
     {
         case 'inicio':
@@ -19,9 +20,12 @@ function getPrincipal($whereami='inicio')
         case 'mp3':
             $contenido = getMp3();
             break;
+        case 'contacto':
+            $contenido = 'Aqui colocaremos el contenido del formulario de contacto';
+            break;
         default:
             //Error 404
-            $contenido = '<h2>Error 404</h2><p>Lo sientimos, pero no se encuentra disponible lo que nos está solicitando</p>';
+            $contenido = '<h2>Error 404</h2><p>Lo sentimos, pero no se encuentra disponible lo que nos está solicitando</p>';
     }
     return $contenido;
 }
@@ -198,29 +202,31 @@ function getChat()
 
 function getMp3()
 {
-    $contenido = '<div id="musica1" style="margin-left:12px">
+    $contenido = '
+    <div id="musica1" style="margin-left:12px">
         <div class="titulo1">
-                <a href="#" target="repro" class="link" >Bachat mp3</a>
+            <a href="#" target="repro" class="link" >Bachat mp3</a>
         </div>
         <div id="repro1">
-                <iframe src="/_swf/repro3.swf" frameborder="0" ></iframe>
+            <iframe src="/_swf/repro3.swf" frameborder="0" ></iframe>
         </div>
     </div><!-- musica1  -->
     <div id="musica2">
         <div class="titulo1">
-                <a href="#" target="repro" class="link" >salsa mp3</a>
+            <a href="#" target="repro" class="link" >salsa mp3</a>
         </div>
         <div id="repro2">
-                <iframe src="/_swf/repro2.swf" frameborder="0" ></iframe>
+            <iframe src="/_swf/repro2.swf" frameborder="0" ></iframe>
         </div>
     </div><!-- musica2  -->
     <div id="musica3">
         <div class="titulo1">
-                <a href="#" target="repro" class="link" >merengue mp3</a>
+            <a href="#" target="repro" class="link" >merengue mp3</a>
         </div>
         <div id="repro3">
-                <iframe src="/_swf/repro1.swf" frameborder="0" ></iframe>
-        </div>';
+            <iframe src="/_swf/repro1.swf" frameborder="0" ></iframe>
+        </div>
+    </div>';
     return $contenido;
 }
 ?>
