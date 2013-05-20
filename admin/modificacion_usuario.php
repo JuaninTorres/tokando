@@ -104,6 +104,10 @@ if(isset($_POST['id_user']) && $_SESSION['auth']['user_admin']==='1')
                 <td>{$tipoUsuario}</td>
             </tr>
             <tr>
+                <th class='ui-widget-header'>Genero Musical</th>
+                <td><input type='text' id='upWgeneroW{$id}' value='{$data['genero']}' {$codeInput} /></td>
+            </tr>
+            <tr>
                 <th class='ui-widget-header'>Programación</th>
                 <td><input type='text' id='uWprogramasW{$data['id_user']}' value='{$data['programas']}' {$codeInput} /></td>
             </tr>
