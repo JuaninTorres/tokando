@@ -50,7 +50,7 @@ function getHead($whereami='inicio')
     <link rel="stylesheet" href="/_css/normalize.css" />
     <link rel="stylesheet" href="/_css/estilo.css" />
     <script src="/_js/prefixfree.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>DOCUMEN
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script>
     // Carga del locutor online
         $(document).on("ready",contDinamico);
