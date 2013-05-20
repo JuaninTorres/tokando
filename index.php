@@ -25,14 +25,7 @@ require_once(DOCUMENT_ROOT.'/_template/_funciones.php');
             <?php echo getHeader($seccionActual); ?>
         </header>
         <?php echo getBanner(); ?>
-        <div id="fila1">
-            <?php echo getRadio(); ?>
-            <?php echo getTv(); ?>
-            <?php echo getLocutorOnline(); ?>
-        </div>
-        <div id="fila2">
-            <?php echo getPrincipal($seccionActual); ?>
-        </div>
+        <?php echo getPrincipal($seccionActual); ?>
         <hr align="left" size="1" width="100%" noshade>
         <?php echo getFooter(); ?>
     </section>

@@ -5,8 +5,19 @@ function getPrincipal($whereami='inicio')
     switch($whereami)
     {
         case 'inicio':
-            $contenido = getChat();
-            $contenido .= getRedes();
+            $contenido = '<div id="fila1">'.
+                getRadio().
+                getTv().
+                getLocutorOnline().'
+            </div>
+            <div id="fila2">
+                '.
+                getChat().
+                getRedes().'
+            </div>';
+            break;
+        case 'mp3':
+            $contenido = getMp3();
             break;
         default:
             //Error 404
@@ -182,6 +193,34 @@ function getChat()
         </div>
         <!-- PAGINA DESARROLLADA POR PHILLIP MENDOZA GONZALES WWW.PHILLIPMG.COM-->';
 
+    return $contenido;
+}
+
+function getMp3()
+{
+    $contenido = '<div id="musica1" style="margin-left:12px">
+        <div class="titulo1">
+                <a href="#" target="repro" class="link" >Bachat mp3</a>
+        </div>
+        <div id="repro1">
+                <iframe src="/_swf/repro3.swf" frameborder="0" ></iframe>
+        </div>
+    </div><!-- musica1  -->
+    <div id="musica2">
+        <div class="titulo1">
+                <a href="#" target="repro" class="link" >salsa mp3</a>
+        </div>
+        <div id="repro2">
+                <iframe src="/_swf/repro2.swf" frameborder="0" ></iframe>
+        </div>
+    </div><!-- musica2  -->
+    <div id="musica3">
+        <div class="titulo1">
+                <a href="#" target="repro" class="link" >merengue mp3</a>
+        </div>
+        <div id="repro3">
+                <iframe src="/_swf/repro1.swf" frameborder="0" ></iframe>
+        </div>';
     return $contenido;
 }
 ?>
