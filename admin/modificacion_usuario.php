@@ -68,7 +68,7 @@ if(isset($_POST['id_user']) && $_SESSION['auth']['user_admin']==='1')
         // veamos tipo de usuario
         $tiposPublicacion = array('locutor','publicidad');
         $tipoPublicacion = "<div id='tipo_publicacion'>";
-        foreach ($tiposPosibles as $index => $tipo) {
+        foreach ($tiposPublicacion as $index => $tipo) {
             $checked=($index==$data['tipo_usuario'])?"checked='checked'":'';
             $tipoPublicacion .= "<input type='radio' id='tipo_publicacion_{$index}' name=uWtipo_usuarioW{$data['id_user']} value='{$tipo}' {$codeInputRadio} {$checked}/><label for='tipo_publicacion_{$index}'>".ucfirst($tipo)."</label>";
         }
@@ -81,7 +81,7 @@ if(isset($_POST['id_user']) && $_SESSION['auth']['user_admin']==='1')
 
         $espacio_publicidad = "<div id='espacio_publicidad'>";
         $checkNingunEspacio = ($data['publicidad_asignada']=='')?"checked='checked'":'';
-        $espacio_publicidad .=  "<input type='radio' id='espacio_0' name=uWpublicidad_asignadaW{$data['id_user']} value='null' {$codeInputRadio} {$checkNingunEspacio} /><label for='espacio_0'>Ninguno</label>";
+        $espacio_publicidad .=  "<input type='radio' id='espacio_0' name=uWpublicidad_asignadaW{$data['id_user']} value='' {$codeInputRadio} {$checkNingunEspacio} /><label for='espacio_0'>Ninguno</label>";
         foreach ($espaciosPublicidad as $idEspacio) {
             $checked=($index==$data['publicidad_asignada'])?"checked='checked'":'';
             $espacio_publicidad .= "<input type='radio' id='espacio_{$idEspacio}' name=uWpublicidad_asignadaW{$data['id_user']} value='{$idEspacio}' {$codeInputRadio} {$checked}/><label for='espacio_{$idEspacio}'>{$idEspacio}</label>";
