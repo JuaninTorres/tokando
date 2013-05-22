@@ -93,6 +93,23 @@ if(isset($_POST))
         }else{
             // Si se pudo hacer el UPDATE, entonces muestro una animacion
             $jsCall[] = "savehighlight('{$id_e}')";
+
+            // callback especiales
+            switch ($tableT)
+            {
+                case 'u':
+                    switch($field)
+                    {
+                        case 'timezone':
+                            // Si estoy cambiando MI zona horaria, entonces me piso la variable de sesion
+                            if($id==$_SESSION['auth']['id_user'])
+                            {
+                                $_SESSION['auth']['timezone'] = $caption;
+                            }
+                        break;
+                    }
+                    break;
+            }
         }
     }
     catch(Exception $e)

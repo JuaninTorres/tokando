@@ -10,6 +10,7 @@ if(isset($_SESSION['auth']['id_user']))
     $id = $_SESSION['auth']['id_user'];
 
     require_once($_SERVER['DOCUMENT_ROOT'].'/class/connectPDO.php');
+    require_once('funciones_comunes.php');
     $connection = new connectPDO;
 
     $sql = 'SELECT * FROM '.PREFIXTABLA.'_users WHERE id_user = ?';
@@ -26,6 +27,15 @@ if(isset($_SESSION['auth']['id_user']))
         {
             throw new Exception('No existe el usuario', 1);
         }
+
+        $zonasHorarias = "<select id='uWtimezoneW{$data['id_user']}' {$codeSelect}>";
+        $timeZones = getArrayTimeZones();
+        foreach ($timeZones as $zona => $descripcionZona)
+        {
+            $selected = ($data['timezone']==$zona)?'selected':'';
+            $zonasHorarias .= "<option value='{$zona}' {$selected}>{$descripcionZona}</option>\n";
+        }
+        $zonasHorarias .= "</select>";
 
         $jsCall[] = "$('#change_my_pass').button({icons: { primary: 'ui-icon-locked'}}).click(btnCambioPass);";
         // Comenzamos a dibujar
@@ -82,6 +92,10 @@ if(isset($_SESSION['auth']['id_user']))
             <tr>
                 <th class='ui-widget-header'>Residencia</th>
                 <td><input type='text' id='upWresidenciaW{$id}' value='{$data['residencia']}' {$codeInput} /></td>
+            </tr>
+            <tr>
+                <th class='ui-widget-header'>Zona horaria</th>
+                <td>{$zonasHorarias}</td>
             </tr>
             <tr>
                 <th class='ui-widget-header'>Facebook</th>
