@@ -27,6 +27,7 @@ require_once(DOCUMENT_ROOT.'/_template/_funciones.php');
         <?php echo getBanner(); ?>
         <?php echo getPrincipal($seccionActual); ?>
         <hr align="left" size="1" width="100%" noshade>
+        <?php echo getPublicidad(); ?>
         <?php echo getFooter(); ?>
     </section>
 <!-- PAGINA DESARROLLADA POR PHILLIP MENDOZA GONZALES WWW.PHILLIPMG.COM-->

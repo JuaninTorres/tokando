@@ -229,4 +229,61 @@ function getMp3()
     </div>';
     return $contenido;
 }
+
+function getPublicidad()
+{
+    global $connectPDO;
+
+    $templatePublicidad = '
+        <div class="espacios">
+            <div class="tituloespacio">
+                <a href="_[LINKPUBLICIDAD]_">_[TITULOPUBLICIDAD]_</a>
+            </div>
+            <div class="imagenespacio">
+                <a href="_[LINKPUBLICIDAD]_"><img src="_[URLIMAGEN]_"></a>
+            </div>
+        </div>
+    ';
+
+    $buscame = array('_[TITULOPUBLICIDAD]_','_[LINKPUBLICIDAD]_','_[URLIMAGEN]_');
+    $sql = 'SELECT p.* FROM '.PREFIXTABLA.'_publicidad as p,'.PREFIXTABLA.'_usuarios as u
+    WHERE p.codigo_publicidad = u.publicidad_asignada
+    AND p.activa';
+
+    $publicidad = array();
+    $espacios = '';
+
+    $dataEx = $connectPDO->Execute($sql);
+    if($dataEx->rowCount()>0)
+    {
+        while($data = $dataEx->fetch())
+        {
+            $publicidad['codigo_publicidad'] = array(
+                'titulo'     => $data['titulo'],
+                'url_imagen' => $data['url_imagen'],
+                'link'       => $data['link']
+                );
+        }
+    }
+
+    for($i=1;$i<=4;$i++)
+    {
+        $titulo     = ($publicidad[$i]['titulo']=='')?'Publica aquí':$publicidad[$i]['titulo'];
+        $url_imagen = ($publicidad[$i]['url_imagen']=='')?'/imagenes/publica_aqui.jpg':$publicidad[$i]['url_imagen'];
+        $link       = ($publicidad[$i]['link']=='')?'javascript:void(0)':$publicidad[$i]['link'];
+
+        $espacios .= '<!-- '.$i.' -->'.str_replace($buscame, array($titulo,$url_imagen,$link), $templatePublicidad);
+    }
+
+    $contenido = '
+        <div class="titulo1" style="margin:0em 0.2em 0em 0.2em" >
+            <a href="javascript:void(0);"  >PUBLICIDAD</a>
+        </div>
+
+        <div id="publicidad">
+            '.$espacios.'
+        </div>';
+    return $contenido;
+}
+
 ?>
