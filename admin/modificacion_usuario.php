@@ -45,7 +45,7 @@ if(isset($_POST['id_user']) && $_SESSION['auth']['user_admin']==='1')
         if($data['fotografia']=='' || !is_file(urldecode(DOCUMMENT_ROOT.$data['fotografia'])))
         {
             // no existe la foto del locutor
-            $srcFoto = "/selectdj/_images/classic_mic.jpg";
+            $srcFoto = "/imagenes/classic_mic.png";
         }
         else
         {
@@ -145,7 +145,7 @@ if(isset($_POST['id_user']) && $_SESSION['auth']['user_admin']==='1')
             </tr>
             <tr>
                 <th class='ui-widget-header'>Fotografía</th>
-                <td><input id='uWfotografiaW{$data['id_user']}' type='file' name='files[]' data-url='_upload/server/php/' multiple>
+                <td><input id='uWfotografiaW{$data['id_user']}' type='file' name='files[]' data-url='/_upload/server/php/' multiple>
                 {$foto}
                 </td>
             </tr>

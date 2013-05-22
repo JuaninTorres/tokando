@@ -37,6 +37,8 @@ $googleplus = ($data['url_googleplus']=='')?'':"<a href='{$data['url_googleplus'
 $youtube = ($data['url_youtube']=='')?'':"<a href='{$data['url_youtube']}' target='_blank'><img src='/imagenes/youtube.png'></a>";
 $soundcloud = ($data['url_soundcloud']=='')?'':"<a href='{$data['url_soundcloud']}' target='_blank'><img src='/imagenes/soundcloud.png'></a>";
 
+$foto = (is_file($_SERVER['DOCUMENT_ROOT'].$data['fotografia']))?$data['fotografia']:'/imagenes/classic_mic.png';
+
 ?>
 <div id="locutor" >
     <div id="datos">
@@ -63,7 +65,7 @@ $soundcloud = ($data['url_soundcloud']=='')?'':"<a href='{$data['url_soundcloud'
             ?>
         </div><!--#logosL-->
         <div id="locutorimagen">
-            <img src="<?php echo $data['fotografia']; ?>">
+            <img src="<?php echo $foto; ?>">
         </div>
         <!--#imagenL-->
     </div>

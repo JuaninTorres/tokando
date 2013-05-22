@@ -13,10 +13,11 @@
 error_reporting(E_ALL | E_STRICT);
 require('UploadHandler.php');
 $opciones = array(
-    'upload_dir' => '../../_files/',
-    'upload_url' => '/selectdj/_upload/_files/',
+    'upload_dir' => $_SERVER['DOCUMENT_ROOT'].'/_upload/_files/',
+    'upload_url' => '/_upload/_files/',
     'user_dirs'  => true,
-    'mkdir_mode' => 0777
+    'mkdir_mode' => 0777,
+    'accept_file_types' => '/.(gif|jpe?g|png)$/i',
     );
 
 class CustomUploadHandler extends UploadHandler {
