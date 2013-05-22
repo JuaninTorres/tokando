@@ -17,17 +17,21 @@ function inicio () {
         width: 350,
         modal: true,
         buttons: {
-          "Ingresar": "doLogin",
+          "Ingresar": function() {
+              //alert('Aqui crearé la funcion del login');
+              var formValues = $('#formlogin').serialize(),
+              url = $('#formlogin').attr( 'action' );
+              var logueando = $.post( url, formValues, showPrincipal, "json" );
+              logueando.done(function(data){
+                $( "#divlogin" ).dialog( "close" );
+              });
+          },
           Cancel: function() {
             $( this ).dialog( "close" );
           }
         },
         close: function() {
           allFields.val( "" ).removeClass( "ui-state-error" );
-        }
-      }).keypress(function(e) {
-        if (e.keyCode == $.ui.keyCode.ENTER) {
-          doLogin();
         }
       });
 
@@ -47,16 +51,6 @@ function inicio () {
 
   // Actualizo la hora
   setInterval(setFechaHoraServer,1000);
-}
-
-function doLogin()
-{
-  var formValues = $('#formlogin').serialize(),
-  url = $('#formlogin').attr( 'action' );
-  var logueando = $.post( url, formValues, showPrincipal, "json" );
-  logueando.done(function(data){
-    $( "#divlogin" ).dialog( "close" );
-  });
 }
 
 function showPrincipal (data)
