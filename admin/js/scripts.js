@@ -25,6 +25,10 @@ function inicio () {
         close: function() {
           allFields.val( "" ).removeClass( "ui-state-error" );
         }
+      }).keypress(function(e) {
+          if (e.keyCode == $.ui.keyCode.ENTER) {
+              alert('Persione el ENTER y ahora podria hacer login');
+          }
       });
 
       $( "#btn_ingresar" )
