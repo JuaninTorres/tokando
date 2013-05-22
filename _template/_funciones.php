@@ -130,7 +130,7 @@ function getRadio()
                 <p>&nbsp;Escuchanos en :</p>
                 </div><!-- PAGINA DESARROLLADA POR PHILLIP MENDOZA GONZALES WWW.PHILLIPMG.COM-->
                 <div id="logosescuchanos">
-                <a href="http://www.facebook.com/pages/TOKANDO-TV/288908571149565?id=288908571149565&sk=app_208195102528120" alt="escuchanos en fb" target="_blank"><img src="imagenes/fb.png"></a>
+                <a href="http://www.facebook.com/pages/TOKANDO-TV/288908571149565?id=288908571149565&sk=app_208195102528120" alt="escuchanos en fb" target="_blank"><img src="imagenes/facebook.png"></a>
                 <a href="rtsp://aac.01wzserver.com:1935/aacplus/8004" alt="escuchanos en android" target="_blank"><img src="imagenes/android.png"></a>
                 <a href="http://aac.01wzserver.com:1935/aacplus/8004/playlist.m3u" alt="escuchanos en apple" target="_blank"><img src="imagenes/apple.png"></a>
                 <a href="rtsp://aac.01wzserver.com:1935/aacplus/8004" alt="escuchanos en bb" target="_blank"><img src="imagenes/bb.png"></a>
