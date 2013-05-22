@@ -27,7 +27,7 @@ function inicio () {
         }
       }).keypress(function(e) {
           if (e.keyCode == $.ui.keyCode.ENTER) {
-              alert('Persione el ENTER y ahora podria hacer login');
+              doLogin();
           }
       });
 
