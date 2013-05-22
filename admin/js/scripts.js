@@ -18,7 +18,7 @@ function inicio () {
         modal: true,
         buttons: {
           "Ingresar": doLogin,
-          Cancel: function() {
+          "Cancelar": function() {
             $( this ).dialog( "close" );
           }
         },
