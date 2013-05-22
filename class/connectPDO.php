@@ -84,6 +84,10 @@ class connectPDO extends PDO
         parent::setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING );
 
         $this->exec("SET lc_time_names = 'es_CL'");
+        if(isset($_SESSION['auth']['timezone']))
+        {
+            $this->exec("SET time_zone = '{$_SESSION['auth']['timezone']}'");
+        }
         return $con;
     }
 
@@ -147,6 +151,7 @@ class connectPDO extends PDO
 
     public function pre_exec($reemplazar,$pajar)
     {
+        $NEWpajar = '';
         $pajarA = explode('?',$pajar.'_[EOF]_');
         if (count($pajarA)-1 ==count($reemplazar) )
         {

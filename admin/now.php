@@ -1,4 +1,7 @@
 <?php
 session_start();
-echo json_encode(array('ahora'=>date('Y-m-d H:i:s')));
+require_once($_SERVER['DOCUMENT_ROOT'].'/class/connectPDO.php');
+require_once('funciones_comunes.php');
+$connection = new connectPDO;
+echo json_encode(array('ahora'=>$connection->getone("SELECT CONCAT(CURRENT_DATE(),' ',CURTIME())")));
 ?>

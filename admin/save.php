@@ -30,7 +30,7 @@ if(isset($_POST))
 
     $table       = $tableA[$tableT];
     $fieldPK     = $fieldsPK[$tableT];
-    $caption     = ($checked!='') ? $_POST['checked'] : $caption;
+    $caption     = ($_POST['checked']!='') ? $_POST['checked'] : $caption;
     $valoractual = $connection->getone("SELECT {$field} FROM {$table} WHERE {$fieldPK}=?",array($id));
 
     $jsCall = array();
