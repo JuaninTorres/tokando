@@ -97,7 +97,7 @@ if(isset($_POST['id_user']) && $_SESSION['auth']['user_admin']==='1')
             $selected = ($data['timezone']==$zona)?'selected':'';
             $zonasHorarias .= "<option value='{$zona}' {$selected}>{$descripcionZona}</option>\n";
         }
-        $zonasHorarias .= "</select>"
+        $zonasHorarias .= "</select>";
 
         // Comenzamos a dibujar
         $html = "<div id='modalModificarUsuario'></div>
