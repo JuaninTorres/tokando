@@ -6,6 +6,7 @@ if(isset($_POST['id_user']) && $_SESSION['auth']['user_admin']==='1')
     $codeSelect     = 'onclick="editInputCRC(this)" onchange="editInputCRCOff(this);editInputCRC(this);"';
     $codeInputCheck = 'class="radio" onclick="guardando(this.value,this.id,this.checked)"';
     $codeInputRadio = 'onclick="guardando(this.value,this.name)" ';
+    $espaciosPublicidad = array(1,2,3,4);
 
     require_once($_SERVER['DOCUMENT_ROOT'].'/class/connectPDO.php');
     $connection = new connectPDO;
@@ -42,7 +43,7 @@ if(isset($_POST['id_user']) && $_SESSION['auth']['user_admin']==='1')
         })";
 
         // Foto
-        if($data['fotografia']=='' || !is_file(urldecode(DOCUMMENT_ROOT.$data['fotografia'])))
+        if($data['fotografia']=='' || !is_file(urldecode($_SERVER['DOCUMENT_ROOT'].$data['fotografia'])))
         {
             // no existe la foto del locutor
             $srcFoto = "/imagenes/classic_mic.png";
@@ -62,6 +63,31 @@ if(isset($_POST['id_user']) && $_SESSION['auth']['user_admin']==='1')
         }
         $tipoUsuario .= "</div>";
         $jsCall[] = "\$('#tipo_usuario').buttonset()";
+
+
+        // veamos tipo de usuario
+        $tiposPublicacion = array('locutor','publicidad');
+        $tipoPublicacion = "<div id='tipo_publicacion'>";
+        foreach ($tiposPosibles as $index => $tipo) {
+            $checked=($index==$data['tipo_usuario'])?"checked='checked'":'';
+            $tipoPublicacion .= "<input type='radio' id='tipo_publicacion_{$index}' name=uWtipo_usuarioW{$data['id_user']} value='{$tipo}' {$codeInputRadio} {$checked}/><label for='tipo_publicacion_{$index}'>".ucfirst($tipo)."</label>";
+        }
+        $tipoPublicacion .= "</div>";
+        $jsCall[] = "\$('#tipo_publicacion').buttonset()";
+
+
+
+        // Espacio publicidad
+
+        $espacio_publicidad = "<div id='espacio_publicidad'>";
+        $checkNingunEspacio = ($data['publicidad_asignada']=='')?"checked='checked'":'';
+        $espacio_publicidad .=  "<input type='radio' id='espacio_0' name=uWpublicidad_asignadaW{$data['id_user']} value='null' {$codeInputRadio} {$checkNingunEspacio} /><label for='espacio_0'>Ninguno</label>";
+        foreach ($espaciosPublicidad as $idEspacio) {
+            $checked=($index==$data['publicidad_asignada'])?"checked='checked'":'';
+            $espacio_publicidad .= "<input type='radio' id='espacio_{$idEspacio}' name=uWpublicidad_asignadaW{$data['id_user']} value='{$idEspacio}' {$codeInputRadio} {$checked}/><label for='espacio_{$idEspacio}'>{$idEspacio}</label>";
+        }
+        $espacio_publicidad .= "</div>";
+        $jsCall[] = "\$('#espacio_publicidad').buttonset()";
 
         // Comenzamos a dibujar
         $html = "<div id='modalModificarUsuario'></div>
@@ -102,6 +128,14 @@ if(isset($_POST['id_user']) && $_SESSION['auth']['user_admin']==='1')
             <tr>
                 <th class='ui-widget-header'>Tipo de usuario</th>
                 <td>{$tipoUsuario}</td>
+            </tr>
+            <tr>
+                <th class='ui-widget-header'>Tipo de Publicacion</th>
+                <td>{$tipoPublicacion}</td>
+            </tr>
+            <tr>
+                <th class='ui-widget-header'>Espacio Asignado a Publicidad</th>
+                <td>{$espacio_publicidad}</td>
             </tr>
             <tr>
                 <th class='ui-widget-header'>Genero Musical</th>
