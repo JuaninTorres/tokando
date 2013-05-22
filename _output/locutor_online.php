@@ -65,7 +65,7 @@ $foto = (is_file($_SERVER['DOCUMENT_ROOT'].$data['fotografia']))?$data['fotograf
             ?>
         </div><!--#logosL-->
         <div id="locutorimagen">
-            <img src="<?php echo $foto; ?>">
+            <img style="height: 225px;width: 150px;" src="<?php echo $foto; ?>">
         </div>
         <!--#imagenL-->
     </div>
