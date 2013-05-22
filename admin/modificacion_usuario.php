@@ -9,6 +9,7 @@ if(isset($_POST['id_user']) && $_SESSION['auth']['user_admin']==='1')
     $espaciosPublicidad = array(1,2,3,4);
 
     require_once($_SERVER['DOCUMENT_ROOT'].'/class/connectPDO.php');
+    require_once('funciones_comunes.php');
     $connection = new connectPDO;
 
     $sql = 'SELECT * FROM '.PREFIXTABLA.'_users WHERE id_user = ?';
@@ -89,6 +90,15 @@ if(isset($_POST['id_user']) && $_SESSION['auth']['user_admin']==='1')
         $espacio_publicidad .= "</div>";
         $jsCall[] = "\$('#espacio_publicidad').buttonset()";
 
+        $zonasHorarias = "<select id='uWtimezoneW{$data['id_user']}' {$codeSelect}>";
+        $timeZones = getArrayTimeZones();
+        foreach ($timeZones as $zona => $descripcionZona)
+        {
+            $selected = ($data['timezone']==$zona)?'selected':'';
+            $zonasHorarias .= "<option value='{$zona}' {$selected}>{$descripcionZona}</option>\n";
+        }
+        $zonasHorarias .= "</select>"
+
         // Comenzamos a dibujar
         $html = "<div id='modalModificarUsuario'></div>
         <table id='modificion_usuario' class='ui-widget'>
@@ -136,6 +146,10 @@ if(isset($_POST['id_user']) && $_SESSION['auth']['user_admin']==='1')
             <tr>
                 <th class='ui-widget-header'>Espacio Asignado a Publicidad</th>
                 <td>{$espacio_publicidad}</td>
+            </tr>
+            <tr>
+                <th class='ui-widget-header'>Zona horaria</th>
+                <td>{$zonasHorarias}</td>
             </tr>
             <tr>
                 <th class='ui-widget-header'>Genero Musical</th>
