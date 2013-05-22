@@ -27,6 +27,7 @@ if($_SESSION['auth']['user_admin']==='1')
                 <th>Nombres</th>
                 <th>Apellidos</th>
                 <th>Estado</th>
+                <th>Tipo publicación</th>
                 <th>Editar</th>
             </tr>
             </thead>
@@ -42,6 +43,7 @@ if($_SESSION['auth']['user_admin']==='1')
                 <td>{$data['first_name']}</td>
                 <td>{$data['last_name']}</td>
                 <td>{$estadoUser}</td>
+                <td>".ucfirst($data['tipo_usuario'])."</td>
                 <td><button rel='{$data['id_user']}'>Editar</button></td>
             </tr>
             ";
