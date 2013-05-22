@@ -51,17 +51,7 @@ function getHead($whereami='inicio')
     <link rel="stylesheet" href="/_css/estilo.css" />
     <script src="/_js/prefixfree.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script>
-    // Carga del locutor online
-        $(document).on("ready",contDinamico);
-        function contDinamico () {
-            var urlLocutorOnline = "/_output/locutor_online.php";
-            var locOnline = $.get( urlLocutorOnline, function(data){
-                $("#locutorimagen").html(data);
-            });
-            setTimeout("contDinamico()",60000);
-        }
-    </script>
+    <script src="/_js/scripts.js"></script>
     ';
     return $contenido;
 }
