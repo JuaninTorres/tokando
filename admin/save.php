@@ -73,7 +73,22 @@ if(isset($_POST))
 
         $response = $connection->exec($sql,$param);
         if ($response === PDOERROR){
-            $jsMessage = "alert('fallo actualizacion de información');$('#{$id_e}').val('{$valoractual}');";
+            switch ($tableT)
+            {
+                case 'u':
+                    switch($field)
+                    {
+                        case 'publicidad_asignada':
+                            $jsMessage = "alert('Este espacio publicitario ya está asignado a otro usuario, intente con otra opción');$('#{$id_e}').val('{$valoractual}');";
+                            break;
+                        default:
+                            $jsMessage = "alert('fallo actualizacion de información');$('#{$id_e}').val('{$valoractual}');";
+                    }
+                    break;
+                default:
+                    $jsMessage = "alert('fallo actualizacion de información');$('#{$id_e}').val('{$valoractual}');";
+                    break;
+            }
             throw new Exception($jsMessage, 1);
         }else{
             // Si se pudo hacer el UPDATE, entonces muestro una animacion
