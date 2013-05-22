@@ -246,7 +246,7 @@ function getPublicidad()
     ';
 
     $buscame = array('_[TITULOPUBLICIDAD]_','_[LINKPUBLICIDAD]_','_[URLIMAGEN]_');
-    $sql = 'SELECT p.* FROM '.PREFIXTABLA.'_publicidad as p,'.PREFIXTABLA.'_usuarios as u
+    $sql = 'SELECT p.* FROM '.PREFIXTABLA.'_publicidad as p,'.PREFIXTABLA.'_users as u
     WHERE p.codigo_publicidad = u.publicidad_asignada
     AND p.activa';
 
