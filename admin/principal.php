@@ -78,7 +78,7 @@ if(isset($_SESSION['auth']))
             <div id='nuevo_anuncio'>{$modificacionPublicidad}</div>
             </fieldset>";
         $jsCall[]="$(function () {
-                        $('#publicidad_imagen_file').fileupload({
+                        $('#pWurl_imagenW{$dataP['id_publicidad']}').fileupload({
                             dataType: 'json',
                             done: function (e, data) {
                                 $.each(data.result.files, function (index, file) {
