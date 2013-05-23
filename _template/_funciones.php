@@ -228,7 +228,7 @@ function getPublicidad()
                 <a href="_[LINKPUBLICIDAD]_">_[TITULOPUBLICIDAD]_</a>
             </div>
             <div class="imagenespacio">
-                <a href="_[LINKPUBLICIDAD]_"><img src="_[URLIMAGEN]_"></a>
+                <a href="_[LINKPUBLICIDAD]_"><img src="_[URLIMAGEN]_" style="height:310px; width:210px"></a>
             </div>
         </div>
     ';
@@ -260,7 +260,7 @@ function getPublicidad()
         $url_imagen = ($publicidad[$i]['url_imagen']=='')?'/imagenes/publica_aqui.jpg':$publicidad[$i]['url_imagen'];
         $link       = ($publicidad[$i]['link']=='')?'javascript:void(0)':$publicidad[$i]['link'];
 
-        $espacios .= '<!-- '.$i.' -->'.str_replace($buscame, array($titulo,$url_imagen,$link), $templatePublicidad);
+        $espacios .= str_replace($buscame, array($titulo,$url_imagen,$link), $templatePublicidad);
     }
 
     $contenido = '
