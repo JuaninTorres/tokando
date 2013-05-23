@@ -44,14 +44,16 @@ function getContacto(){
             if(use_ajax)
             {
               $('#loading').css('visibility','visible');
-              $.post('/_submit_contacto.php',$('#contact-form').serialize()+'&ajax=1',
+              var f = $('#contact-form'),
+              accion = $(f).attr('action');
+              $.post(accion,$(f).serialize()+'&ajax=1',
                 function(data){
                   if(parseInt(data)==-1){
                     $.validationEngine.buildPrompt("#captcha","* Número de verificacion equivocado!","error");
                   }
                   else
                   {
-                    $("#contact-form").hide('slow').after('<h1>Muchas gracias!</h1>');
+                    $(f).hide('slow').after('<h1>Muchas gracias!</h1>');
                   }
                   $('#loading').css('visibility','hidden');
                 }

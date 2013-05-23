@@ -24,6 +24,7 @@ function getPrincipal($whereami='inicio')
             break;
         case 'contacto':
             $contenido = getContacto();
+            $contenido .= "<script>getContacto();</script>";
             break;
         default:
             //Error 404
@@ -308,7 +309,7 @@ function getContacto()
         <div id="form-container">
             <h1>Contactenos</h1>
             <h2>Por favor, cuentenos sus inquietudes</h2>
-            <form id="contact-form" name="contact-form" method="post" action="submit.php">
+            <form id="contact-form" name="contact-form" method="post" action="/_submit_contacto.php">
                 <table width="100%" border="0" cellspacing="0" cellpadding="5">
                     <tr>
                         <td width="15%"><label for="name">Nombre</label></td>
