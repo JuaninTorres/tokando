@@ -6,6 +6,8 @@ if(isset($_SESSION['auth']))
     require_once('funciones_comunes.php');
     $connection = new connectPDO;
 
+    $codeInput      = 'onclick="editInputCRC(this)" onblur="editInputCRCOff(this)"';
+
     // Lo que primero haré es dejar la instruccion para armar los tabs
     $jsCall[] = "$('#tabs').tabs()";
     $jsCall[] = "$('#div_btn_logout').show()";
@@ -56,11 +58,11 @@ if(isset($_SESSION['auth']))
                 <tbody class='ui-widget-content'>
                     <tr>
                         <th class='ui-widget-header'>Titulo</th>
-                        <td><input type='text' id='pWtituloW{$dataP['id_publicidad']}' value='{$dataP['titulo']}' placeholder='Cual es el titulo de la publicidad?' /></td>
+                        <td><input {$codeInput} type='text' id='pWtituloW{$dataP['id_publicidad']}' value='{$dataP['titulo']}' placeholder='Cual es el titulo de la publicidad?' /></td>
                     </tr>
                     <tr>
                         <th class='ui-widget-header'>URL link</th>
-                        <td><input type='text' id='pWlinkW{$dataP['id_publicidad']}' value='{$dataP['link']}' placeholder='Hacia donde hay que dejar linkeada la imagen?'/></td>
+                        <td><input {$codeInput} type='text' id='pWlinkW{$dataP['id_publicidad']}' value='{$dataP['link']}' placeholder='Hacia donde hay que dejar linkeada la imagen?'/></td>
                     </tr>
                     <tr>
                         <th class='ui-widget-header'>Imagen</th>
