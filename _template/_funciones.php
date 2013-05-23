@@ -246,7 +246,7 @@ function getPublicidad()
     {
         while($data = $dataEx->fetch())
         {
-            $publicidad['codigo_publicidad'] = array(
+            $publicidad[$data['codigo_publicidad']] = array(
                 'titulo'     => $data['titulo'],
                 'url_imagen' => $data['url_imagen'],
                 'link'       => $data['link']
