@@ -23,7 +23,7 @@ function getPrincipal($whereami='inicio')
             $contenido = getMp3();
             break;
         case 'contacto':
-            $contenido = 'Aqui colocaremos el contenido del formulario de contacto';
+            $contenido = getContacto();
             break;
         default:
             //Error 404
@@ -51,8 +51,13 @@ function getHead($whereami='inicio')
     <link href="http://fonts.googleapis.com/css?family=Average+Sans" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="/_css/normalize.css" />
     <link rel="stylesheet" href="/_css/estilo.css" />
+    <link rel="stylesheet" href="/_js/jqtransformplugin/jqtransform.css" />
+    <link rel="stylesheet" href="/_js/formValidator/validationEngine.jquery.css" />
+    <link rel="stylesheet" href="/_css/contacto.css" />
     <script src="/_js/prefixfree.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="/_js/jqtransformplugin/jquery.jqtransform.js"></script>
+    <script src="/_js/formValidator/jquery.validationEngine.js"></script>
     <script src="/_js/scripts.js"></script>
     ';
     return $contenido;
@@ -90,7 +95,7 @@ function getNav($actualSeccion='inicio')
     $nav = '
     <nav id="nav">
         <ul>
-            <li class="_[CURRENT_INICIO]_"><a href="/">INICIO</a></li>
+            <li class="_[CURRENT_INICIO]_"><a href="/">PROGRAMACION</a></li>
             <li class="_[CURRENT_MUSICAMP3]_"><a href="/mp3">MUSICA MP3</a></li>
             <li class="_[CURRENT_CONTACTO]_"><a href="/contacto">CONTACTANOS</a></li>
         </ul>
@@ -286,6 +291,66 @@ function getPublicidad()
         <div id="publicidad">
             '.$espacios.'
         </div>';
+    return $contenido;
+}
+
+function getContacto()
+{
+    $_SESSION['n1'] = rand(1,20);
+    $_SESSION['n2'] = rand(1,20);
+    $_SESSION['expect'] = $_SESSION['n1']+$_SESSION['n2'];
+    $contenido = '
+    <div id="main-container-contacto">
+        <div id="form-container">
+            <h1>Contactenos</h1>
+            <h2>Por favor, cuentenos sus inquietudes</h2>
+            <form id="contact-form" name="contact-form" method="post" action="submit.php">
+                <table width="100%" border="0" cellspacing="0" cellpadding="5">
+                    <tr>
+                        <td width="15%"><label for="name">Nombre</label></td>
+                        <td width="70%"><input type="text" class="validate[required,custom[onlyLetter]]" name="name" id="name" value="" /></td>
+                        <td width="15%" id="errOffset">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td><label for="email">Email</label></td>
+                        <td><input type="text" class="validate[required,custom[email]]" name="email" id="email" value="" /></td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td><label for="subject">Asunto</label></td>
+                        <td><select name="subject" id="subject">
+                            <option value="" selected="selected"> - Elija -</option>
+                            <option value="Pregunta">Pregunta</option>
+                            <option value="Propuesta de negocios">Propuesta de negocios</option>
+                            <option value="Cotizacion">Cotización</option>
+                        </select>          </td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td valign="top"><label for="message">Mensaje</label></td>
+                        <td><textarea name="message" id="message" class="validate[required]" cols="35" rows="5"></textarea></td>
+                        <td valign="top">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td><label for="captcha">'.$_SESSION['n1'].' + '.$_SESSION['n2'].'</label></td>
+                        <td><input type="text" class="validate[required,custom[onlyNumber]]" name="captcha" id="captcha" /></td>
+                        <td valign="top">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td valign="top">&nbsp;</td>
+                        <td colspan="2"><input type="submit" name="button" id="button" value="Submit" />
+                            <input type="reset" name="button2" id="button2" value="Reset" />
+                            <img id="loading" src="/_css/img/ajax-load.gif" width="16" height="16" alt="loading" /></td>
+                        </tr>
+                    </table>
+                </form>
+
+                <?php echo $success; ?>
+
+            </div>
+
+        </div>
+    ';
     return $contenido;
 }
 
