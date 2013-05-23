@@ -14,6 +14,63 @@ function setHoraCliente()
   var textoFecha = dayarray[day]+" "+daym+" de "+montharray[month]+" de "+year + ' - ' + hora;
 }
 
+function getContacto(){
+  $('#contact-form').jqTransform();
+  $("button").click(function(){
+    $(".formError").hide();
+  });
+
+  var use_ajax=true;
+  $.validationEngine.settings={};
+
+  $("#contact-form").validationEngine({
+    inlineValidation: true,
+    promptPosition: "centerRight",
+    success :  function(){use_ajax=true},
+    failure : function(){use_ajax=false;}
+   });
+
+  $('#btn_enviar_contacto').button({
+          icons: {
+              primary: "ui-icon-mail-closed"
+          }
+        })
+        .click(function() {
+          if(!$('#subject').val().length)
+            {
+              $.validationEngine.buildPrompt(".jqTransformSelectWrapper","* Este campo es requerido","error")
+              return false;
+            }
+            if(use_ajax)
+            {
+              $('#loading').css('visibility','visible');
+              $.post('/_submit_contacto.php',$('#contact-form').serialize()+'&ajax=1',
+                function(data){
+                  if(parseInt(data)==-1){
+                    $.validationEngine.buildPrompt("#captcha","* Número de verificacion equivocado!","error");
+                  }
+                  else
+                  {
+                    $("#contact-form").hide('slow').after('<h1>Muchas gracias!</h1>');
+                  }
+                  $('#loading').css('visibility','hidden');
+                }
+              );
+            }
+            $(this).preventDefault();
+        });
+
+    $('#btn_reset_contacto').button({
+          icons: {
+              primary: "ui-icon-trash"
+          }
+        })
+        .click(function() {
+            $('#contact-form')[0].reset();
+            $(this).preventDefault();
+        });
+}
+
 // Carga del locutor online
 $(document).on("ready",contDinamico);
 function contDinamico () {

@@ -75,7 +75,7 @@
 }
 
 #main-container-contacto td > button{
-    text-indent:8px;
+    padding: 0.5em;
 }
 
 #main-container-contacto .error{

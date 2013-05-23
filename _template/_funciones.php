@@ -51,11 +51,15 @@ function getHead($whereami='inicio')
     <link href="http://fonts.googleapis.com/css?family=Average+Sans" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="/_css/normalize.css" />
     <link rel="stylesheet" href="/_css/estilo.css" />
+    <link rel="stylesheet" href="/_css/ui-lightness/jquery-ui-1.10.1.css" />
+    <link rel="stylesheet" href="/_css/jquery-ui-timepicker-addon.css" />
     <link rel="stylesheet" href="/_js/jqtransformplugin/jqtransform.css" />
     <link rel="stylesheet" href="/_js/formValidator/validationEngine.jquery.css" />
     <link rel="stylesheet" href="/_css/contacto.css" />
     <script src="/_js/prefixfree.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="/_js/jquery-ui-1.10.2.min.js"></script>
+    <script src="/_js/jquery-ui-timepicker-addon.js"></script>
     <script src="/_js/jqtransformplugin/jquery.jqtransform.js"></script>
     <script src="/_js/formValidator/jquery.validationEngine.js"></script>
     <script src="/_js/scripts.js"></script>
@@ -338,8 +342,9 @@ function getContacto()
                     </tr>
                     <tr>
                         <td valign="top">&nbsp;</td>
-                        <td colspan="2"><button type="submit" name="button" id="button" >Enviar</button>
-                            <button type="reset" name="button2" id="button2" >Reset</button>
+                        <td colspan="2">
+                            <button type="submit" id="btn_enviar_contacto" >Enviar</button>
+                            <button type="reset" id="btn_reset_contacto" >Reset</button>
                             <img id="loading" src="/_css/img/ajax-load.gif" width="16" height="16" alt="loading" /></td>
                         </tr>
                     </table>
