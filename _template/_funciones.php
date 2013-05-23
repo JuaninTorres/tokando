@@ -156,8 +156,8 @@ function getLocutorOnline()
             </div>
             <!-- PAGINA DESARROLLADA POR PHILLIP MENDOZA GONZALES WWW.PHILLIPMG.COM-->
 
-            <div id="locutorimagen">
-                <img src="imagenes/prueba.jpg">
+            <div id="espacio_locutor">
+
             </div>
             <!--#imagenL-->';
 

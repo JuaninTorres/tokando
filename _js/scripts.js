@@ -19,7 +19,7 @@ $(document).on("ready",contDinamico);
 function contDinamico () {
     var urlLocutorOnline = "/_output/locutor_online.php";
     var locOnline = $.get( urlLocutorOnline, function(data){
-        $("#locutorimagen").html(data);
+        $("#espacio_locutor").html(data);
     });
     setTimeout("contDinamico()",60000);
 }
