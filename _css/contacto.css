@@ -11,7 +11,6 @@
 #main-container-contacto #form-container{
     background-color:#f5f5f5;
     padding:15px;
-
     -moz-border-radius:12px;
     -khtml-border-radius: 12px;
     -webkit-border-radius: 12px;
@@ -55,21 +54,20 @@
 }
 
 #main-container-contacto label{
-  color:#777777;
+    color:#777777;
     text-transform:uppercase;
     font-size:10px;
     font-family:Tahoma,Arial,Sans-serif;
 }
 
-#main-container-contacto option{
+#main-container-contacto option, #main-container-contacto select{
   color:#777777;
+  font-size:12px;
 }
-
 
 #main-container-contacto textarea{
     color:#404040;
     font-family:Arial,Helvetica,sans-serif;
-    font-size:12px;
 }
 
 #main-container-contacto td > button{
@@ -91,4 +89,9 @@
     position:relative;
     bottom:9px;
     visibility:hidden;
+}
+
+#main-container-contacto input, #main-container-contacto textarea {
+    width: 100%;
+    font-size:12px;
 }
