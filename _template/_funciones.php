@@ -24,7 +24,7 @@ function getPrincipal($whereami='inicio')
             break;
         case 'contacto':
             $contenido = getContacto();
-            $contenido .= "<script>getContacto();</script>";
+            //$contenido .= "<script>getContacto();</script>";
             break;
         default:
             //Error 404
@@ -54,15 +54,14 @@ function getHead($whereami='inicio')
     <link rel="stylesheet" href="/_css/estilo.css" />
     <link rel="stylesheet" href="/_css/ui-lightness/jquery-ui-1.10.1.css" />
     <link rel="stylesheet" href="/_css/jquery-ui-timepicker-addon.css" />
-    <link rel="stylesheet" href="/_js/jqtransformplugin/jqtransform.css" />
-    <link rel="stylesheet" href="/_js/formValidator/validationEngine.jquery.css" />
     <link rel="stylesheet" href="/_css/contacto.css" />
     <script src="/_js/prefixfree.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="/_js/jquery-ui-1.10.2.min.js"></script>
     <script src="/_js/jquery-ui-timepicker-addon.js"></script>
-    <script src="/_js/jqtransformplugin/jquery.jqtransform.js"></script>
-    <script src="/_js/formValidator/jquery.validationEngine.js"></script>
+    <script src="/_js/validation/dist/jquery.validate.min.js"></script>
+    <script src="/_js/validation/dist/additional-methods.min.js"></script>
+    <script src="/_js/validation/localization/messages_es.js"></script>
     <script src="/_js/scripts.js"></script>
     ';
     return $contenido;
