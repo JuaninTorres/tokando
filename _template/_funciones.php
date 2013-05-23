@@ -180,7 +180,7 @@ function getRedes()
 function getSiguenos()
 {
     $contenido = '<div class="titulo1" >
-                    <a href="javascript:void(0)" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:460px; height:258px;" target="like" class="link" >SIGUENOS/a>
+                    <a href="javascript:void(0)" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:460px; height:258px;" target="like" class="link" >SIGUENOS</a>
                 </div>
                 <div id="siguenos">
                     <div class="siguenos"><a href="https://play.google.com/store/apps/details?id=s42.tokando.radio&amp;feature=search_result#?t=W251bGwsMSwyLDEsInM0Mi50b2thbmRvLnJhZGlvIl0." target="_blank"><img src="/imagenes/gplay.png"></a></div><!--siguenos-->
