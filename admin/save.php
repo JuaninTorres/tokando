@@ -19,13 +19,15 @@ if(isset($_POST))
     $tableA = array(
         'o' => PREFIXTABLA.'_online',
         'u' => PREFIXTABLA.'_users',
-        'up' => PREFIXTABLA.'_users'
+        'up' => PREFIXTABLA.'_users',
+        'p' => PREFIXTABLA.'_publicidad',
         );
 
     $fieldsPK = array(
         'o' => 'id_online',
         'u' => 'id_user',
-        'up' => 'id_user'
+        'up' => 'id_user',
+        'p' => 'id_publicidad',
         );
 
     $table       = $tableA[$tableT];

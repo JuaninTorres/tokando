@@ -2,93 +2,94 @@
 session_start();
 if(isset($_SESSION['auth']))
 {
+    require_once($_SERVER['DOCUMENT_ROOT'].'/class/connectPDO.php');
     require_once('funciones_comunes.php');
+    $connection = new connectPDO;
 
     // Lo que primero haré es dejar la instruccion para armar los tabs
     $jsCall[] = "$('#tabs').tabs()";
     $jsCall[] = "$('#div_btn_logout').show()";
 
-
-    $titulos[] = 'Dj Locuteando';
-    //si existe el id_online quiere decir que tiene viva la sesion para transmitir
-    if(isset($_SESSION['auth']['id_online']))
+    if($_SESSION['auth']['tipo_usuario']=='locutor')
     {
-        $locutor = getLocutorOnline();
-        $contenidos[]=$locutor['contenido'];
-        $jsCall[]=$locutor['jscall'];
+        $titulos[] = 'Dj Locuteando';
+        //si existe el id_online quiere decir que tiene viva la sesion para transmitir
+        if(isset($_SESSION['auth']['id_online']))
+        {
+            $locutor = getLocutorOnline();
+            $contenidos[]=$locutor['contenido'];
+            $jsCall[]=$locutor['jscall'];
+        }
+        else
+        {
+            $idBtn = 'btn_comenzar_transmitir';
+            $contenidos[] = "<fieldset class='ui-widget ui-widget-content'>
+            <legend class='ui-widget-header ui-corner-all'>¿".ucfirst($_SESSION['auth']['first_name'])." ".ucfirst($_SESSION['auth']['last_name']).", Vas a transmitir en este momento?</legend>
+            <button id='{$idBtn}'>Comenzar a transmitir</button>
+            </fieldset>";
+            $jsCall[]="$('#{$idBtn}').button({icons: { primary: \"ui-icon-check\"}}
+                ).click(function(){
+                    var comenzarLocutor = \$.get('locutor_online.php',function(data){
+                        \$('#tabs-1').html(data.contenido);
+                        eval(data.jscall);
+                    },'json');
+            })";
+        }
     }
-    else
+
+    if($_SESSION['auth']['tipo_usuario']=='publicidad')
     {
-        $idBtn = 'btn_comenzar_transmitir';
+        // Dejo disponible para todos la opcion de hacer anuncios
+        $titulos[] = 'Publicidad';
+        $dataP = $connection->getrow('SELECT p.* FROM FROM '.PREFIXTABLA.'_publicidad as p,'.PREFIXTABLA.'_users as u
+            WHERE p.codigo_publicidad = u.publicidad_asignada
+            AND p.activa AND u.id_user = ?',array($_SESSION['auth']['id_user']));
+        if($dataP===PDOWARNING)
+        {
+            $modificacionPublicidad = "No tiene asignado ningun espacio publicitario";
+        }
+        else
+        {
+            $imagenpublicidad = ($dataP['url_imagen']=='')?"<img src='/imagenes/publica_aqui.jpg' />":"<img src='{$dataP['url_imagen']}' />";
+            $modificacionPublicidad = "
+                <table id='modificion_publicidad' class='ui-widget'>
+                <tbody class='ui-widget-content'>
+                    <tr>
+                        <th class='ui-widget-header'>Titulo</th>
+                        <td><input type='text' id='pWtituloW{$dataP['id_publicidad']}' value='{$dataP['titulo']}' placeholder='Cual es el titulo de la publicidad?' /></td>
+                    </tr>
+                    <tr>
+                        <th class='ui-widget-header'>URL link</th>
+                        <td><input type='text' id='pWlinkW{$dataP['id_publicidad']}' value='{$dataP['link']}' placeholder='Hacia donde hay que dejar linkeada la imagen?'/></td>
+                    </tr>
+                    <tr>
+                        <th class='ui-widget-header'>Imagen</th>
+                        <td><input id='pWurl_imagenW{$dataP['id_publicidad']}' type='file' name='files[]' data-url='/_upload/server/php/' multiple>
+                        <div id='publicidad_preview_imagen'>{$imagenpublicidad}</div>
+                        </td>
+                    </tr>
+                </tbody>
+                </table>
+            ";
+        }
+
         $contenidos[] = "<fieldset class='ui-widget ui-widget-content'>
-        <legend class='ui-widget-header ui-corner-all'>¿".ucfirst($_SESSION['auth']['first_name'])." ".ucfirst($_SESSION['auth']['last_name']).", Vas a transmitir en este momento?</legend>
-        <button id='{$idBtn}'>Comenzar a transmitir</button>
-        </fieldset>";
-        $jsCall[]="$('#{$idBtn}').button({icons: { primary: \"ui-icon-check\"}}
-            ).click(function(){
-                var comenzarLocutor = \$.get('locutor_online.php',function(data){
-                    \$('#tabs-1').html(data.contenido);
-                    eval(data.jscall);
-                },'json');
-        })";
+            <legend class='ui-widget-header ui-corner-all'>Subir un nuevo anuncio</legend>
+            <div id='nuevo_anuncio'>{$modificacionPublicidad}</div>
+            </fieldset>";
+        $jsCall[]="$(function () {
+                        $('#publicidad_imagen_file').fileupload({
+                            dataType: 'json',
+                            done: function (e, data) {
+                                $.each(data.result.files, function (index, file) {
+                                    $('#publicidad_preview_imagen').html($('<img />').attr('src',file.url));
+                                    guardando(file.url,'pWurl_imagenW{$dataP['id_publicidad']}');
+                                    console.log(file);
+                                });
+                            }
+                        });
+                    })";
     }
-
-    // Dejo disponible para todos la opcion de hacer anuncios
-    // $titulos[] = 'Anuncios';
-    // $anuncios = "
-    //     <form id='form_anuncio' name='form_anuncio' onsubmit='return false' action='publicar_anuncio.php'>
-    //     <table id='modificion_usuario' class='ui-widget'>
-    //     <tbody class='ui-widget-content'>
-    //         <tr>
-    //             <th class='ui-widget-header'>Titulo</th>
-    //             <td><input type='text' id='anuncio_titulo' name='anuncio_titulo' placeholder='Cual es el titulo del anuncio?' /></td>
-    //         </tr>
-    //         <tr>
-    //             <th class='ui-widget-header'>URL link</th>
-    //             <td><input type='text' id='anuncio_url_link' name='anuncio_url_link' placeholder='Hacia donde hay que dejar linkeada la imagen?'/></td>
-    //         </tr>
-    //         <tr>
-    //             <th class='ui-widget-header'>Imagen</th>
-    //             <td><input id='anuncio_imagen_file' type='file' name='files[]' data-url='_upload/server/php/' multiple>
-    //             <input id='anuncio_imagen' type='hidden' name='anuncio_imagen' id='anuncio_imagen' >
-    //             <div id='anuncio_preview_imagen'></div>
-    //             </td>
-    //         </tr>
-    //         <tr>
-    //             <th class='ui-widget-header'>Publicar</th>
-    //             <td><button id='btn_publicar_anuncio'>Publicar Ahora</button></td>
-    //         </tr>
-    //     </tbody>
-    //     </table>
-    //     </form>
-    // ";
-
-    // $contenidos[] = "<fieldset class='ui-widget ui-widget-content'>
-    //     <legend class='ui-widget-header ui-corner-all'>Subir un nuevo anuncio</legend>
-    //     <div id='nuevo_anuncio'>{$anuncios}</div>
-    //     </fieldset>";
-    // $jsCall[]="$(function () {
-    //                     $('#anuncio_imagen_file').fileupload({
-    //                         dataType: 'json',
-    //                         done: function (e, data) {
-    //                             $.each(data.result.files, function (index, file) {
-    //                                 $('#anuncio_preview_imagen').html($('<img />').attr('src',file.url));
-    //                                 $('#anuncio_imagen').val(file.url);
-    //                                 console.log(file);
-    //                             });
-    //                         }
-    //                     });
-    //                 })";
-    // $jsCall[]="$('#btn_publicar_anuncio').button({icons: { primary: 'ui-icon-pin-s'}}).click(function(){
-    //                 var formValues = $('#form_anuncio').serialize(),
-    //                 url = $('#form_anuncio').attr('action');
-    //                 var publicarAnuncio = $.post( url, formValues, function(data){
-    //                     $('#form_anuncio')[0].reset();
-    //                     $('#anuncio_preview_imagen').empty();
-    //                     alert(data.msg);
-    //                     console.log(data);
-    //                 },'json' );
-    // })";
 
     $titulos[] = 'Mis Datos';
     $contenidos[] = "<fieldset class='ui-widget ui-widget-content'>
