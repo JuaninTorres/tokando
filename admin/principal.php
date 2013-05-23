@@ -41,7 +41,7 @@ if(isset($_SESSION['auth']))
     {
         // Dejo disponible para todos la opcion de hacer anuncios
         $titulos[] = 'Publicidad';
-        $dataP = $connection->getrow('SELECT p.* FROM FROM '.PREFIXTABLA.'_publicidad as p,'.PREFIXTABLA.'_users as u
+        $dataP = $connection->getrow('SELECT p.* FROM '.PREFIXTABLA.'_publicidad as p,'.PREFIXTABLA.'_users as u
             WHERE p.codigo_publicidad = u.publicidad_asignada
             AND p.activa AND u.id_user = ?',array($_SESSION['auth']['id_user']));
         if($dataP===PDOWARNING)
