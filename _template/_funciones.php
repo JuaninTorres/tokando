@@ -338,8 +338,8 @@ function getContacto()
                     </tr>
                     <tr>
                         <td valign="top">&nbsp;</td>
-                        <td colspan="2"><input type="submit" name="button" id="button" value="Submit" />
-                            <input type="reset" name="button2" id="button2" value="Reset" />
+                        <td colspan="2"><button type="submit" name="button" id="button" >Enviar</button>
+                            <button type="reset" name="button2" id="button2" >Reset" </button>
                             <img id="loading" src="/_css/img/ajax-load.gif" width="16" height="16" alt="loading" /></td>
                         </tr>
                     </table>
