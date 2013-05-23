@@ -14,7 +14,9 @@ function getPrincipal($whereami='inicio')
             <div id="fila2">
                 '.
                 getChat().
-                getRedes().'
+                getRedes().
+                getSiguenos().
+                '
             </div>';
             break;
         case 'mp3':
@@ -172,6 +174,19 @@ function getRedes()
         <div id="espaciolike" name="like" style="margin:0.2em 0em 0.4em 0em">
             <iframe src="//www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Fpages%2FTOKANDO-TV%2F288908571149565%3Ffref%3Dts&amp;width=500&amp;height=258&amp;show_faces=true&amp;colorscheme=light&amp;stream=false&amp;border_color&amp;header=false&amp;appId=334775653285723" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:500px; height:258px;" allowTransparency="true"></iframe>
         </div>';
+    return $contenido;
+}
+
+function getSiguenos()
+{
+    $contenido = '<div class="titulo1" >
+                    <a href="javascript:void(0)" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:460px; height:258px;" target="like" class="link" >SIGUENOS/a>
+                </div>
+                <div id="siguenos">
+                    <div class="siguenos"><a href="https://play.google.com/store/apps/details?id=s42.tokando.radio&amp;feature=search_result#?t=W251bGwsMSwyLDEsInM0Mi50b2thbmRvLnJhZGlvIl0." target="_blank"><img src="/imagenes/gplay.png"></a></div><!--siguenos-->
+                    <div class="siguenos"><a href="https://www.facebook.com/groups/216191211835073/?fref=ts" target="_blank"><img src="/imagenes/grupo.png"></a></div><!--siguenos-->
+                    <div class="siguenos"><a href="http://www.youtube.com/feed/UC8cuGz98vuQD9vITDqVMv6Q/u" target="_blank"><img src="/imagenes/canal.png"></a></div><!--siguenos-->
+                </div>';
     return $contenido;
 }
 
