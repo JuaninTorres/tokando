@@ -41,25 +41,19 @@ nav ul li{
 	border-radius: 19px;
 }
 nav li a{
-	color: #000000;
-	padding: 0.3em 0.3em;
-	margin: 0.1em 0 0 ;
 	border-radius: 0.8em;
-	display: inline-block;
 	border: solid 1px #0f6fe1;
-	text-decoration: none;
 	box-shadow: rgba(0,0,0,0.5) 2px 2px 10px;
+	color: #000000;
+	display: inline-block;
+	margin: 0.1em 0 0 ;
+	padding: 0.3em 0.3em;
+	text-decoration: none;
 }
 nav li a:hover{
-	color: #000;
 	background-color: rgba(255,255,255,0.8);
-	padding: 0.3em 1em;
-	margin: 0.1em 0 0 ;
-	border-radius: 0.8em;
-	display: inline-block;
 	border: solid 1px #fff;
 	text-decoration: none;
-	box-shadow: rgba(0,0,0,0.5) 2px 2px 10px;
 }
 nav , #arriba{
 	display: inline-block;
