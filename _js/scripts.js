@@ -100,7 +100,6 @@ function getContacto(){
 }
 
 // Carga del locutor online
-$(document).on("ready",contDinamico);
 function contDinamico () {
     var urlLocutorOnline = "/_output/locutor_online.php";
     var locOnline = $.get( urlLocutorOnline, function(data){

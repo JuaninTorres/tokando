@@ -36,7 +36,18 @@ function getPrincipal($whereami='inicio')
 // Funciones de secciones
 function getHead($whereami='inicio')
 {
-    $dondeEstoy=($whereami=='inicio')?'':' - '.ucfirst($whereami);
+    switch($whereami)
+    {
+        case 'inicio':
+            $dondeEstoy = '';
+            break;
+        case 'contacto':
+            $dondeEstoy = ' - '.ucfirst($whereami);
+            $cargaInicialJS = 'getContacto()';
+        default:
+            $dondeEstoy = ' - '.ucfirst($whereami);
+            break;
+    }
     $titulo = 'TOKANDO.COM'.$dondeEstoy;
 
     $contenido = '
@@ -63,6 +74,12 @@ function getHead($whereami='inicio')
     <script src="/_js/validation/additional-methods.min.js"></script>
     <script src="/_js/validation/localization/messages_es.js"></script>
     <script src="/_js/scripts.js"></script>
+    <script>
+        $(document).on("ready",function(){
+            contDinamico();
+            '.$cargaInicialJS.'
+        });
+    </script>
     ';
     return $contenido;
 }
