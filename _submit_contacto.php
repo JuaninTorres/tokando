@@ -2,7 +2,7 @@
 /* config start */
 $emailAddress = 'juanin.torres@gmail.com';
 /* config end */
-require $_SERVER['DOCUMENT_ROOT']."/phpmailer/class.phpmailer.php";
+require $_SERVER['DOCUMENT_ROOT']."/class/phpmailer/class.phpmailer.php";
 session_start();
 foreach($_POST as $k=>$v)
 {
