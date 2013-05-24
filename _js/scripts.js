@@ -15,20 +15,51 @@ function setHoraCliente()
 }
 
 function getContacto(){
-  $('#contact-form').jqTransform();
-  $("button").click(function(){
-    $(".formError").hide();
+  // $('#contact-form').jqTransform();
+  // $("button").click(function(){
+  //   $(".formError").hide();
+  // });
+
+  // var use_ajax=true;
+  // $.validationEngine.settings={};
+
+  // $("#contact-form").validationEngine({
+  //   inlineValidation: true,
+  //   promptPosition: "centerRight",
+  //   success :  function(){use_ajax=true},
+  //   failure : function(){use_ajax=false;}
+  //  });
+
+  //$("#contact-form").validate();
+  $("#contact-form").validate({
+    rules: {
+      name: {
+        required: true,
+        minlength: 2
+      },
+      email: {
+        required: true,
+        email: true
+      },
+      subject: "required",
+      message: {
+        required: true,
+        minlength: 10
+      }
+    },
+    messages: {
+      name: {
+        required: "Por favor ingrese su nombre",
+        minlength: "Su nombre no puede ser tan corto"
+      },
+      email: "Por favor ingrese un email válido",
+      email: "Por favor seleccione un asunto",
+      message: {
+        required: "Por favor ingrese su mensaje",
+        minlength: "Su mensaje no puede ser tan corto"
+      },
+    }
   });
-
-  var use_ajax=true;
-  $.validationEngine.settings={};
-
-  $("#contact-form").validationEngine({
-    inlineValidation: true,
-    promptPosition: "centerRight",
-    success :  function(){use_ajax=true},
-    failure : function(){use_ajax=false;}
-   });
 
   $('#btn_enviar_contacto').button({
           icons: {
@@ -36,20 +67,15 @@ function getContacto(){
           }
         })
         .click(function() {
-          if(!$('#subject').val().length)
-            {
-              $.validationEngine.buildPrompt(".jqTransformSelectWrapper","* Este campo es requerido","error")
-              return false;
-            }
-            if(use_ajax)
-            {
               $('#loading').css('visibility','visible');
               var f = $('#contact-form'),
               accion = $(f).attr('action');
+
+
               $.post(accion,$(f).serialize()+'&ajax=1',
                 function(data){
                   if(parseInt(data)==-1){
-                    $.validationEngine.buildPrompt("#captcha","* Número de verificacion equivocado!","error");
+                    // Error
                   }
                   else
                   {
@@ -58,7 +84,7 @@ function getContacto(){
                   $('#loading').css('visibility','hidden');
                 }
               );
-            }
+
             $(this).preventDefault();
         });
 

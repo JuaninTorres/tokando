@@ -312,12 +312,12 @@ function getContacto()
                 <table width="100%" border="0" cellspacing="0" cellpadding="5">
                     <tr>
                         <td width="15%"><label for="name">Nombre</label></td>
-                        <td width="70%"><input type="text" class="validate[required,custom[onlyLetter]]" name="name" id="name" value="" /></td>
+                        <td width="70%"><input type="text" name="name" id="name" value="" /></td>
                         <td width="15%" id="errOffset">&nbsp;</td>
                     </tr>
                     <tr>
                         <td><label for="email">Email</label></td>
-                        <td><input type="text" class="validate[required,custom[email]]" name="email" id="email" value="" /></td>
+                        <td><input type="text" name="email" id="email" value="" /></td>
                         <td>&nbsp;</td>
                     </tr>
                     <tr>
