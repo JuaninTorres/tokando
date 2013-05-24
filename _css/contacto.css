@@ -96,6 +96,10 @@
 }
 
 #main-container-contacto input, #main-container-contacto textarea {
-    width: 100%;
+    width: 22em;
     font-size:12px;
+}
+
+#main-container-contacto label.error {
+    margin-left: 2em;
 }
