@@ -14,23 +14,8 @@ function setHoraCliente()
   var textoFecha = dayarray[day]+" "+daym+" de "+montharray[month]+" de "+year + ' - ' + hora;
 }
 
-function getContacto(){
-  // $('#contact-form').jqTransform();
-  // $("button").click(function(){
-  //   $(".formError").hide();
-  // });
-
-  // var use_ajax=true;
-  // $.validationEngine.settings={};
-
-  // $("#contact-form").validationEngine({
-  //   inlineValidation: true,
-  //   promptPosition: "centerRight",
-  //   success :  function(){use_ajax=true},
-  //   failure : function(){use_ajax=false;}
-  //  });
-
-  //$("#contact-form").validate();
+function validar()
+{
   $("#contact-form").validate({
     rules: {
       name: {
@@ -60,6 +45,25 @@ function getContacto(){
       },
     }
   });
+}
+
+function getContacto(){
+  // $('#contact-form').jqTransform();
+  // $("button").click(function(){
+  //   $(".formError").hide();
+  // });
+
+  // var use_ajax=true;
+  // $.validationEngine.settings={};
+
+  // $("#contact-form").validationEngine({
+  //   inlineValidation: true,
+  //   promptPosition: "centerRight",
+  //   success :  function(){use_ajax=true},
+  //   failure : function(){use_ajax=false;}
+  //  });
+
+  //$("#contact-form").validate();
 
   $('#btn_enviar_contacto').button({
           icons: {
@@ -75,13 +79,18 @@ function getContacto(){
 
               $.post(accion,$(f).serialize()+'&ajax=1',
                 function(data){
-                  if(parseInt(data)==-1){
-                    // Error
-                    $('#resultado_contacto').html(data).show('slow');
-                  }
-                  else
+                  if(validar())
                   {
-                    $(f).hide('slow').after('<h1>Muchas gracias!</h1>');
+                    if(parseInt(data)==-1){
+                      // Error
+                      $('#resultado_contacto').html(data).show('slow');
+                    }
+                    else
+                    {
+                      $('#resultado_contacto').show('hide');
+                      $(f).hide('slow').after('<h1>Muchas gracias!</h1>');
+                    }
+
                   }
                   $('#loading').css('visibility','hidden');
                 }
