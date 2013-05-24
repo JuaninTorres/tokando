@@ -59,8 +59,8 @@ function getHead($whereami='inicio')
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="/_js/jquery-ui-1.10.2.min.js"></script>
     <script src="/_js/jquery-ui-timepicker-addon.js"></script>
-    <script src="/_js/validation/dist/jquery.validate.min.js"></script>
-    <script src="/_js/validation/dist/additional-methods.min.js"></script>
+    <script src="/_js/validation/jquery.validate.min.js"></script>
+    <script src="/_js/validation/additional-methods.min.js"></script>
     <script src="/_js/validation/localization/messages_es.js"></script>
     <script src="/_js/scripts.js"></script>
     ';
