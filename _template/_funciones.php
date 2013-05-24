@@ -366,9 +366,7 @@ function getContacto()
                         </tr>
                     </table>
                 </form>
-
-                <?php echo $success; ?>
-
+                <div id="resultado_contacto" class="error"></div>
             </div>
 
         </div>

@@ -68,6 +68,7 @@ function getContacto(){
         })
         .click(function() {
               $('#loading').css('visibility','visible');
+              $('#resultado_contacto').show('hide');
               var f = $('#contact-form'),
               accion = $(f).attr('action');
 
@@ -76,6 +77,7 @@ function getContacto(){
                 function(data){
                   if(parseInt(data)==-1){
                     // Error
+                    $('#resultado_contacto').html(data).show('slow');
                   }
                   else
                   {

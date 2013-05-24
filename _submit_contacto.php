@@ -25,16 +25,7 @@ if((int)$_POST['captcha'] != $_SESSION['expect'])
 	$err[]='El código de validación es incorrecto!';
 if(count($err))
 {
-	if($_POST['ajax'])
-	{
-		echo '-1';
-	}
-	else if($_SERVER['HTTP_REFERER'])
-	{
-		$_SESSION['errStr'] = implode('<br />',$err);
-		$_SESSION['post']=$_POST;
-		header('Location: '.$_SERVER['HTTP_REFERER']);
-	}
+	echo implode('<br />',$err);
 	exit;
 }
 $msg=

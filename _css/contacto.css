@@ -100,6 +100,11 @@
     font-size:12px;
 }
 
-#main-container-contacto label.error {
+#main-container-contacto label.error, #main-container-contacto #resultado_contacto {
     margin-left: 2em;
+}
+
+#main-container-contacto #resultado_contacto
+{
+    display: none;
 }
