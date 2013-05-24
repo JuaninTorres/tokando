@@ -63,7 +63,7 @@ function getHead($whereami='inicio')
     <link href="http://fonts.googleapis.com/css?family=Average+Sans" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="/_css/normalize.css" />
     <link rel="stylesheet" href="/_css/estilo.css" />
-    <link rel="stylesheet" href="/_css/ui-lightness/jquery-ui-1.10.1.css" />
+    <link rel="stylesheet" href="/_css/ui-dot-luv/jquery-ui-1.10.1.css" />
     <link rel="stylesheet" href="/_css/jquery-ui-timepicker-addon.css" />
     <link rel="stylesheet" href="/_css/contacto.css" />
     <script src="/_js/prefixfree.min.js"></script>
