@@ -63,7 +63,7 @@ function getContacto(){
   //  });
 
   //$("#contact-form").validate();
-
+  validar();
   $('#btn_enviar_contacto').button({
           icons: {
               primary: "ui-icon-mail-closed"
@@ -78,7 +78,7 @@ function getContacto(){
     accion = $(f).attr('action');
     $.post(accion,$(f).serialize()+'&ajax=1',
       function(data){
-        if(validar())
+        if(validar)
         {
           console.log(data);
           console.log(parseInt(data,10));
