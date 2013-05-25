@@ -11,7 +11,7 @@ $parametrosURL = explode('/', trim($REQUEST_URI,'/'));
 // El primer parametro lo tomo como la seccion solicitada
 $seccionActual = addslashes(array_shift($parametrosURL));
 $seccionActual = ($seccionActual=='')?'inicio':$seccionActual;
-require_once(DOCUMENT_ROOT.'/_template/_funciones.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/_template/_funciones.php');
 ?><!DOCTYPE html>
 <html lang="es">
 <head>

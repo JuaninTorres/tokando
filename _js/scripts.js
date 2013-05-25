@@ -87,7 +87,7 @@ function getContacto(){
           else
           {
             $('#resultado_contacto').hide('fast');
-            $(f).hide('fast').after('<h1>Muchas gracias!</h1>');
+            $(f).hide('fast').after('<div class="agradecimientos">Muchas gracias!</div>Prontos nos contactaremos con usted.');
           }
 
         }

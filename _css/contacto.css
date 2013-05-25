@@ -115,3 +115,11 @@
     text-transform: none;
     width: 35em;
 }
+
+.agradecimientos{
+    color:#777777;
+    font-size:22px;
+    font-weight:normal;
+    text-transform:uppercase;
+    margin-bottom:5px;
+}
