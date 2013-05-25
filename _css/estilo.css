@@ -346,3 +346,8 @@ footer a{
 	width: 30%;
 	margin-left: 0.6em;
 }
+
+div.foto_locutor img
+{
+	width:450 px;
+}
