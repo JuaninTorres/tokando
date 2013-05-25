@@ -38,11 +38,10 @@ function validar()
         minlength: "Su nombre no puede ser tan corto"
       },
       email: "Por favor ingrese un email válido",
-      email: "Por favor seleccione un asunto",
       message: {
         required: "Por favor ingrese su mensaje",
         minlength: "Su mensaje no puede ser tan corto"
-      },
+      }
     }
   });
 }
@@ -69,33 +68,34 @@ function getContacto(){
           icons: {
               primary: "ui-icon-mail-closed"
           }
-        })
-        .click(function() {
-              $('#loading').css('visibility','visible');
-              $('#resultado_contacto').show('hide');
-              var f = $('#contact-form'),
-              accion = $(f).attr('action');
+        });
 
+  $('#contact-form').submit(function(e){
+    $(e).preventDefault();
+    $('#loading').css('visibility','visible');
+    $('#resultado_contacto').show('hide');
+    var f = $('#contact-form'),
+    accion = $(f).attr('action');
+    $.post(accion,$(f).serialize()+'&ajax=1',
+      function(data){
+        if(validar())
+        {
+          if(parseInt(data,10)==-1){
+            // Error
+            $('#resultado_contacto').html(data).show('slow');
+          }
+          else
+          {
+            $('#resultado_contacto').show('hide');
+            $(f).hide('slow').after('<h1>Muchas gracias!</h1>');
+          }
 
-              $.post(accion,$(f).serialize()+'&ajax=1',
-                function(data){
-                  if(validar())
-                  {
-                    if(parseInt(data)==-1){
-                      // Error
-                      $('#resultado_contacto').html(data).show('slow');
-                    }
-                    else
-                    {
-                      $('#resultado_contacto').show('hide');
-                      $(f).hide('slow').after('<h1>Muchas gracias!</h1>');
-                    }
+        }
+        $('#loading').css('visibility','hidden');
+      }
+    );
 
-                  }
-                  $('#loading').css('visibility','hidden');
-                }
-              );
-        }).preventDefault();
+  });
 
     $('#btn_reset_contacto').button({
           icons: {
