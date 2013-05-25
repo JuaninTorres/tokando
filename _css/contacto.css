@@ -108,9 +108,10 @@
     margin-left: 2em;
 }
 
-#main-container-contacto #resultado_contacto
+#main-container-contacto div#resultado_contacto
 {
     display: none;
     margin-left: 4em;
+    text-transform: none;
     width: 35em;
 }
