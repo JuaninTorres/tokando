@@ -55,8 +55,7 @@
 
 #main-container-contacto label{
     color:#777777;
-    text-transform:uppercase;
-    font-size:10px;
+    font-size:12px;
     font-family:Tahoma,Arial,Sans-serif;
 }
 
@@ -64,6 +63,11 @@
   color:#777777;
   font-size:12px;
 }
+
+#main-container-contacto select.error option, #main-container-contacto select.error{
+  color:#FFFFFF;
+}
+
 #main-container-contacto button{
   font-size:12px;
 }
@@ -107,4 +111,6 @@
 #main-container-contacto #resultado_contacto
 {
     display: none;
+    margin-left: 4em;
+    width: 35em;
 }
