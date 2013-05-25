@@ -71,7 +71,7 @@ function getContacto(){
         });
 
   $('#contact-form').submit(function(e){
-    $(e).preventDefault();
+    e.preventDefault();
     $('#loading').css('visibility','visible');
     $('#resultado_contacto').show('hide');
     var f = $('#contact-form'),
