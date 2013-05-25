@@ -39,7 +39,7 @@ $mail = new PHPMailer();
 $mail->IsMail();
 $mail->AddReplyTo($_POST['email'], $_POST['name']);
 $mail->AddAddress($emailAddress);
-$mail->SetFrom($_POST['email'], $_POST['name']);
+$mail->SetFrom('noreply@'.$_SERVER['SERVER_NAME']);
 $mail->Subject = "Un nuevo contacto referente a ".strtolower($_POST['subject'])." de ".$_POST['name']." | contacto desde ".$_SERVER['HTTP_HOST'];
 $mail->MsgHTML($msg);
 $mail->Send();

@@ -48,7 +48,7 @@ function getHead($whereami='inicio')
             $dondeEstoy = ' - '.ucfirst($whereami);
             break;
     }
-    $titulo = 'TOKANDO.COM'.$dondeEstoy;
+    $titulo = strtoupper($_SERVER["SERVER_NAME"]).$dondeEstoy;
 
     $contenido = '
     <meta charset="UTF-8" />
