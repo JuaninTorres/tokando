@@ -12,20 +12,20 @@ foreach($_POST as $k=>$v)
 }
 $err = array();
 if(!checkLen('name'))
-	$err[]='Nombre: Este campo es muy corto o está vacío!';
+	$err[]='<strong>Nombre</strong>: Este campo es muy corto o está vacío!';
 if(!checkLen('email'))
-	$err[]='Email: Este campo es muy corto o está vacío!';
+	$err[]='<strong>Email</strong>: Este campo es muy corto o está vacío!';
 else if(!checkEmail($_POST['email']))
-	$err[]='Email: Su email no es válido!';
+	$err[]='<strong>Email</strong>: Su email no es válido!';
 if(!checkLen('subject'))
-	$err[]='Título: No ha seleccionado un título para el correo!';
+	$err[]='<strong>Título</strong>: No ha seleccionado un título para el correo!';
 if(!checkLen('message'))
-	$err[]='Mensaje: Este campo es muy corto o está vacío!';
+	$err[]='<strong>Mensaje</strong>: Este campo es muy corto o está vacío!';
 if((int)$_POST['captcha'] != $_SESSION['expect'])
-	$err[]='Validación: El código de validación es incorrecto!';
+	$err[]='<strong>Validación</strong>: El código de validación es incorrecto!';
 if(count($err))
 {
-	echo implode('<br />',$err);
+	echo '<ul><li>'.implode('</li><li>',$err).'</li></ul>';
 	exit;
 }
 $msg=
