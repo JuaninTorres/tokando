@@ -95,9 +95,7 @@ function getContacto(){
                   $('#loading').css('visibility','hidden');
                 }
               );
-
-            $(this).preventDefault();
-        });
+        }).preventDefault();
 
     $('#btn_reset_contacto').button({
           icons: {
