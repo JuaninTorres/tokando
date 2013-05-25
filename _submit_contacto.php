@@ -44,17 +44,10 @@ $mail->Subject = "Un nuevo contacto referente a ".strtolower($_POST['subject']).
 $mail->MsgHTML($msg);
 $mail->Send();
 unset($_SESSION['post']);
-if($_POST['ajax'])
-{
-	echo '1';
-}
-else
-{
-	$_SESSION['sent']=1;
-	if($_SERVER['HTTP_REFERER'])
-		header('Location: '.$_SERVER['HTTP_REFERER']);
-	exit;
-}
+
+echo 1;
+exit;
+
 function checkLen($str,$len=2)
 {
 	return isset($_POST[$str]) && strlen(strip_tags($_POST[$str])) > $len;
