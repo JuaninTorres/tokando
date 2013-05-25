@@ -80,6 +80,8 @@ function getContacto(){
       function(data){
         if(validar())
         {
+          console.log(data);
+          console.log(parseInt(data,10));
           if(parseInt(data,10)!==1){
             // Error
             $('#resultado_contacto').html(data).show('slow');
