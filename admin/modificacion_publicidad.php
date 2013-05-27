@@ -54,7 +54,8 @@ if(isset($_SESSION['auth']['id_user']))
                 <tr>
                     <th class='ui-widget-header'>Usuario a cargo</th>
                     <td><select {$codeSelect} id='pWusuarioW{$dataP['codigo_publicidad']}'>
-                        <option value=''>Selecciones un usuario</option>
+                        <option value=''>Seleccione un usuario</option>
+                        {$options}
                         </select>
                     </td>
                 </tr>
