@@ -4,7 +4,7 @@ if($_SESSION['auth']['user_admin']==='1')
 {
     require_once($_SERVER['DOCUMENT_ROOT'].'/class/connectPDO.php');
     $connection = new connectPDO;
-    $sql = 'SELECT p.id_publicidad,p.codigo_publicidad,p.titulo,u.user_name FROM '.PREFIXTABLA.'_publicidad as p
+    $sql = 'SELECT p.id_publicidad,p.codigo_publicidad,p.titulo,u.user_name,u.user_status FROM '.PREFIXTABLA.'_publicidad as p
     LEFT JOIN '.PREFIXTABLA.'_users as u ON p.codigo_publicidad = u.publicidad_asignada
     ORDER BY p.codigo_publicidad
     ';
