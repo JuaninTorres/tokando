@@ -107,6 +107,13 @@ if(isset($_SESSION['auth']))
     // Ahora vemos si es administrador, si es asi... le damos las opciones
     if($_SESSION['auth']['user_admin']=='1')
     {
+        $titulos[] = 'Administracion de publicidad';
+        $contenidos[] = "<fieldset class='ui-widget ui-widget-content'>
+            <legend class='ui-widget-header ui-corner-all'>Control de todos los espacios publicitarios</legend>
+            <div id='listado_publicidades'></div>
+            </fieldset>";
+        $jsCall[]="getListadoPublicidad()";
+
         $titulos[] = 'Administracion de usuarios';
         $contenidos[] = "<fieldset class='ui-widget ui-widget-content'>
             <legend class='ui-widget-header ui-corner-all'>Usuarios del sistema</legend>

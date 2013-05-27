@@ -17,17 +17,17 @@ if(isset($_POST))
     $validame   = $tmp[4];
 
     $tableA = array(
-        'o' => PREFIXTABLA.'_online',
-        'u' => PREFIXTABLA.'_users',
+        'o'  => PREFIXTABLA.'_online',
+        'u'  => PREFIXTABLA.'_users',
         'up' => PREFIXTABLA.'_users',
-        'p' => PREFIXTABLA.'_publicidad',
+        'p'  => PREFIXTABLA.'_publicidad',
         );
 
     $fieldsPK = array(
-        'o' => 'id_online',
-        'u' => 'id_user',
+        'o'  => 'id_online',
+        'u'  => 'id_user',
         'up' => 'id_user',
-        'p' => 'id_publicidad',
+        'p'  => 'id_publicidad',
         );
 
     $table       = $tableA[$tableT];
@@ -64,9 +64,28 @@ if(isset($_POST))
         }
 
         // Tratamiento especial
-        switch ($field) {
-            case 'user_pass':
-                $caption = md5($caption);
+        switch ($tableT)
+        {
+            case 'u':
+                switch ($field) {
+                    case 'user_pass':
+                        $caption = md5($caption);
+                        break;
+                }
+                break;
+            case 'p':
+                switch ($field) {
+                    case 'usuario':
+                        $table = $tableA['u'];
+                        $fieldPK     = $fieldsPK['u'];
+                        $field = 'publicidad_asignada';
+
+                        $id_user = $caption;
+                        $caption = $id;
+                        $id = $id_user;
+
+                        break;
+                }
                 break;
         }
 
@@ -87,6 +106,15 @@ if(isset($_POST))
                             $jsMessage = "alert('fallo actualizacion de información');$('#{$id_e}').val('{$valoractual}');";
                     }
                     break;
+                case 'p':
+                    switch($field)
+                    {
+                        case 'publicidad_asignada':
+                            $jsMessage = "alert('Un usuario a lo mas puede tener a cargo 1 espacio publicitario, por favor intente con otra opción');";
+                            break;
+                        default:
+                            $jsMessage = "alert('fallo actualizacion de información');$('#{$id_e}').val('{$valoractual}');";
+                    }
                 default:
                     $jsMessage = "alert('fallo actualizacion de información');$('#{$id_e}').val('{$valoractual}');";
                     break;

@@ -141,6 +141,23 @@ function showListadoUsuarios()
         }
       });
 }
+function getListadoPublicidad()
+{
+  $.get('listado_publicidades.php',function(data){
+    $('#listado_publicidades').html(data.contenido);
+    eval(data.jscall);
+  },'json');
+}
+function showListadoPublicidades()
+{
+  $('#publicidades tr td button').button({icons: { primary: 'ui-icon-pencil'}}
+    ).click(function(){
+      var modificarPublicidad = $.post('modificacion_publicidad.php',{ id_publicidad: $(this).attr('rel') },function(data){
+        $('#div_modificar_publicidad').html(data.contenido);
+        eval(data.jscall);
+      },'json');
+    });
+}
 function setFechaHoraServer()
 {
   var saliendo = $.get( 'now.php', function(data){
