@@ -44,7 +44,7 @@ if(isset($_SESSION['auth']['id_user']))
 
         // Comenzamos a dibujar
         $imagenpublicidad = ($dataP['url_imagen']=='')?"<img src='/imagenes/publica_aqui.jpg' />":"<img src='{$dataP['url_imagen']}' />";
-        $modificacionPublicidad = "
+        $html = "
             <table id='modificion_publicidad' class='ui-widget'>
             <tbody class='ui-widget-content'>
                 <tr>
