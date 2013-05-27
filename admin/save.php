@@ -93,8 +93,6 @@ if(isset($_POST))
         $sql    = "UPDATE {$table} SET {$field}=? WHERE {$fieldPK}=? ";
         $param  = array($caption,$id);
 
-        $jsCall[]="alert('{$sql}')";
-        $jsCall[]="alert('".print_r($param,true)."')";
         $response = $connection->exec($sql,$param);
         if ($response === PDOERROR){
             switch ($tableT)
