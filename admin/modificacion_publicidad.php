@@ -38,7 +38,7 @@ if(isset($_SESSION['auth']['id_user']))
             while($dataU = $dataUEx->fetch())
             {
                 $selected = ($dataU['publicidad_asignada']==$dataP['codigo_publicidad'])?'selected':'';
-                $options .= "<opcion value='{$dataU['id_user']}' {$selected}>{$dataU['user_name']}</option>\n";
+                $options .= "<option value='{$dataU['id_user']}' {$selected}>{$dataU['user_name']}</option>\n";
             }
         }
 
