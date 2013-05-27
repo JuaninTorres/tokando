@@ -33,7 +33,6 @@ if(isset($_POST))
     $table       = $tableA[$tableT];
     $fieldPK     = $fieldsPK[$tableT];
     $caption     = ($_POST['checked']!='') ? $_POST['checked'] : $caption;
-    $valoractual = $connection->getone("SELECT {$field} FROM {$table} WHERE {$fieldPK}=?",array($id));
 
     $jsCall = array();
 
@@ -41,6 +40,7 @@ if(isset($_POST))
     {
         //Si campo esta marcado como obligatorio debo verificar que no venga vacio
         if ( $field_required===1 && is_null($caption) ){
+            $valoractual = $connection->getone("SELECT {$field} FROM {$table} WHERE {$fieldPK}=?",array($id));
             $jsMessage = "alert('Campo obligatorio , no puede venir vacio ...');$('#{$id_e}').val('{$valoractual}')";
             throw new Exception($jsMessage, 1);
         }
@@ -100,9 +100,10 @@ if(isset($_POST))
                     switch($field)
                     {
                         case 'publicidad_asignada':
-                            $jsMessage = "alert('Este espacio publicitario ya está asignado a otro usuario, intente con otra opción');$('#{$id_e}').val('{$valoractual}');";
+                            $jsMessage = "alert('Este espacio publicitario ya está asignado a otro usuario, intente con otra opción');";
                             break;
                         default:
+                            $valoractual = $connection->getone("SELECT {$field} FROM {$table} WHERE {$fieldPK}=?",array($id));
                             $jsMessage = "alert('fallo actualizacion de información');$('#{$id_e}').val('{$valoractual}');";
                     }
                     break;
@@ -113,9 +114,11 @@ if(isset($_POST))
                             $jsMessage = "alert('Un usuario a lo mas puede tener a cargo 1 espacio publicitario, por favor intente con otra opción');";
                             break;
                         default:
+                            $valoractual = $connection->getone("SELECT {$field} FROM {$table} WHERE {$fieldPK}=?",array($id));
                             $jsMessage = "alert('fallo actualizacion de información');$('#{$id_e}').val('{$valoractual}');";
                     }
                 default:
+                    $valoractual = $connection->getone("SELECT {$field} FROM {$table} WHERE {$fieldPK}=?",array($id));
                     $jsMessage = "alert('fallo actualizacion de información');$('#{$id_e}').val('{$valoractual}');";
                     break;
             }
