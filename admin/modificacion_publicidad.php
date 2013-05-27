@@ -16,6 +16,7 @@ if(isset($_SESSION['auth']['id_user']))
     LEFT JOIN '.PREFIXTABLA.'_users as u ON p.codigo_publicidad = u.publicidad_asignada
     WHERE id_publicidad = ?';
     $params = array($id);
+    $jsCall = array();
 
     try
     {
