@@ -30,7 +30,7 @@ if(isset($_SESSION['auth']['id_user']))
             throw new Exception('No existe la publicidad solicitada', 1);
         }
 
-        $dataUEx = $connectPDO->Execute('SELECT id_user, user_name, publicidad_asignada FROM '.PREFIXTABLA.'_users as u
+        $dataUEx = $connection->Execute('SELECT id_user, user_name, publicidad_asignada FROM '.PREFIXTABLA.'_users as u
             WHERE (tipo_usuario = ? AND publicidad_asignada IS NULL) OR id_user = ?', array('publicidad',$dataP['id_user']));
         if($dataUEx->rowCount()>0)
         {
